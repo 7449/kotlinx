@@ -4,10 +4,9 @@ package com.kotlin.x
 
 import android.os.Build
 
+inline fun Int.minVersion() = Build.VERSION.SDK_INT >= this
 
-inline fun Any.minVersion(version: Int) = Build.VERSION.SDK_INT >= version
+inline fun Int.maxVersion() = Build.VERSION.SDK_INT <= this
 
-inline fun Any.maxVersion(version: Int) = Build.VERSION.SDK_INT <= version
-
-inline fun Any.currentVersion(version: Int) = Build.VERSION.SDK_INT == version
+inline fun Int.currentVersion() = Build.VERSION.SDK_INT == this
 

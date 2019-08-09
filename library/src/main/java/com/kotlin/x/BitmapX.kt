@@ -23,10 +23,10 @@ inline fun String.getImageWidthHeight(): IntArray {
 /**
  * 图片转 Base64 带头部
  */
-inline fun String.bitmapToBase64HeaderPng(): String {
+inline fun String.bitmapToBase64HeaderPng(quality: Int = 100): String {
     val bitmap = BitmapFactory.decodeFile(this)
     val byteArrayOutputStream = ByteArrayOutputStream()
-    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+    bitmap.compress(Bitmap.CompressFormat.JPEG, quality, byteArrayOutputStream)
     return TextUtils.concat(
         "data:image/jpeg;base64,",
         Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.NO_WRAP)
@@ -36,31 +36,30 @@ inline fun String.bitmapToBase64HeaderPng(): String {
 /**
  * 图片转 Base64
  */
-inline fun String.bitmapToBase64(): String {
+inline fun String.bitmapToBase64(quality: Int = 100): String {
     val bitmap = BitmapFactory.decodeFile(this)
     val byteArrayOutputStream = ByteArrayOutputStream()
-    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+    bitmap.compress(Bitmap.CompressFormat.JPEG, quality, byteArrayOutputStream)
     return Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.NO_WRAP)
 }
 
 /**
  * 图片转 Base64 png
  */
-inline fun Bitmap.bitmapToBase64HeaderPng(): String {
+inline fun Bitmap.bitmapToBase64HeaderPng(quality: Int = 100): String {
     val byteArrayOutputStream = ByteArrayOutputStream()
-    compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+    compress(Bitmap.CompressFormat.PNG, quality, byteArrayOutputStream)
     return TextUtils.concat(
         "data:image/png;base64,",
         Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.NO_WRAP)
-    )
-        .toString()
+    ).toString()
 }
 
 /**
  * 图片转 Base64
  */
-inline fun Bitmap.bitmapToBase64(): String {
+inline fun Bitmap.bitmapToBase64(quality: Int = 100): String {
     val byteArrayOutputStream = ByteArrayOutputStream()
-    compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+    compress(Bitmap.CompressFormat.JPEG, quality, byteArrayOutputStream)
     return Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.NO_WRAP)
 }

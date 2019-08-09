@@ -7,12 +7,12 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: "guru.stefma.bintrayrelease"
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 28
+        minSdkVersion 14
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -27,7 +27,7 @@ android {
     }
 
 }
-version = "0.0.0.3"
+version = "0.0.0.4"
 group = "com.ydevelop"
 androidArtifact {
     artifactId = "kotlinx"
@@ -46,6 +46,4 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleJava8Version"
     implementation "com.ydevelop:klog:$logVersion"
-    compileOnly "com.ydevelop:rv-adapter:$adapterVersion"
-    compileOnly "androidx.recyclerview:recyclerview:$recyclerViewVersion"
 }

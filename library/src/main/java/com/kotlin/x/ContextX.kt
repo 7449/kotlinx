@@ -18,6 +18,8 @@ inline fun Context.startActivity(clazz: Class<*>, bundle: Bundle = Bundle.EMPTY)
     startActivity(intent)
 }
 
+inline fun Context.appIntent(packageName: String) = packageManager.getLaunchIntentForPackage(packageName)
+
 inline fun Context.getDrawable(id: Int): Drawable? = ContextCompat.getDrawable(this, id)
 
 inline fun Context.getColor(id: Int): Int = ContextCompat.getColor(this, id)

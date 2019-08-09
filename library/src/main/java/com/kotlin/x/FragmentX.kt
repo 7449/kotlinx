@@ -7,7 +7,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
-
 inline fun <T : Fragment> AppCompatActivity.findFragmentByTag(tag: String, ifNone: (String) -> T): T =
     supportFragmentManager.findFragmentByTag(tag) as T? ?: ifNone(tag)
 

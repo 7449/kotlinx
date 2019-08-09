@@ -4,34 +4,26 @@ package com.kotlin.x
 
 import com.socks.library.KLog
 
-const val DEFAULT_LOG_TAG = "KotlinX"
+var showLog = true
 
-inline fun Any.LogV() = LogV(this.toString())
+var LOG_TAG = "KotlinX"
 
-inline fun Any.LogV(any: Any) = LogV(DEFAULT_LOG_TAG, any)
+inline fun Any.LogV() {
+    if (showLog) KLog.v(LOG_TAG, this.toString())
+}
 
-inline fun Any.LogV(tag: String, any: Any) = KLog.v(tag, any.toString())
+inline fun Any.LogD() {
+    if (showLog) KLog.d(LOG_TAG, this.toString())
+}
 
-inline fun Any.LogD() = LogD(this.toString())
+inline fun Any.LogI() {
+    if (showLog) KLog.i(LOG_TAG, this.toString())
+}
 
-inline fun Any.LogD(any: Any) = LogD(DEFAULT_LOG_TAG, any)
+inline fun Any.LogW() {
+    if (showLog) KLog.w(LOG_TAG, this.toString())
+}
 
-inline fun Any.LogD(tag: String, any: Any) = KLog.d(tag, any.toString())
-
-inline fun Any.LogI() = LogI(this.toString())
-
-inline fun Any.LogI(any: Any) = LogI(DEFAULT_LOG_TAG, any)
-
-inline fun Any.LogI(tag: String, any: Any) = KLog.i(tag, any.toString())
-
-inline fun Any.LogW() = LogW(this.toString())
-
-inline fun Any.LogW(any: Any) = LogW(DEFAULT_LOG_TAG, any)
-
-inline fun Any.LogW(tag: String, any: Any) = KLog.w(tag, any.toString())
-
-inline fun Any.LogE() = LogE(this.toString())
-
-inline fun Any.LogE(any: Any) = LogE(DEFAULT_LOG_TAG, any)
-
-inline fun Any.LogE(tag: String, any: Any) = KLog.e(tag, any.toString())
+inline fun Any.LogE() {
+    if (showLog) KLog.e(LOG_TAG, this.toString())
+}
