@@ -9,25 +9,19 @@ apply plugin: "guru.stefma.bintrayrelease"
 android {
     compileSdkVersion 29
 
-
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
         kotlinOptions.freeCompilerArgs += ['-module-name', "com.ydevelop.kotlinx"]
     }
 
 }
-version = "0.0.0.4"
+version = "0.0.0.5"
 group = "com.ydevelop"
 androidArtifact {
     artifactId = "kotlinx"
@@ -44,6 +38,5 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation "com.github.bumptech.glide:okhttp3-integration:$glideVersion"
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
-    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleJava8Version"
     implementation "com.ydevelop:klog:$logVersion"
 }

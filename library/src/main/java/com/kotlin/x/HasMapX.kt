@@ -1,6 +1,6 @@
 package com.kotlin.x
 
-import java.util.LinkedHashMap
+import java.util.*
 
 class HashMapUtils private constructor() {
 
@@ -14,9 +14,7 @@ class HashMapUtils private constructor() {
         hashMap[key] = value
     }
 
-    fun <T> get(key: String): T {
-        return hashMap[key] as T
-    }
+    fun <T> get(key: String): T = hashMap[key] as T
 
     fun containsKey(key: String): Boolean {
         return hashMap.containsKey(key)

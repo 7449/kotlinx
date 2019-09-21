@@ -1,5 +1,3 @@
-@file:Suppress("NOTHING_TO_INLINE")
-
 package com.kotlin.x
 
 import android.content.Context
@@ -8,12 +6,12 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import java.lang.reflect.Method
 
-inline fun EditText.offKeyboard() {
+fun EditText.offKeyboard() {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
     imm?.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_IMPLICIT_ONLY)
 }
 
-inline fun EditText.openKeyboard() {
+fun EditText.openKeyboard() {
     isFocusable = true
     isFocusableInTouchMode = true
     requestFocus()
@@ -21,7 +19,7 @@ inline fun EditText.openKeyboard() {
     inputManager?.showSoftInput(this, 0)
 }
 
-inline fun EditText.forceOpenKeyBoard() {
+fun EditText.forceOpenKeyBoard() {
     isFocusable = true
     isFocusableInTouchMode = true
     requestFocus()
@@ -30,7 +28,7 @@ inline fun EditText.forceOpenKeyBoard() {
     imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS)
 }
 
-inline fun EditText.disableShowSoftInput() {
+fun EditText.disableShowSoftInput() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         showSoftInputOnFocus = false
         return

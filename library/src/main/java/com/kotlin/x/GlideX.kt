@@ -1,5 +1,3 @@
-@file:Suppress("NOTHING_TO_INLINE")
-
 package com.kotlin.x
 
 import android.content.Context
@@ -13,59 +11,59 @@ import com.bumptech.glide.util.Util
 import java.io.File
 import java.math.BigDecimal
 
-inline fun ImageView.centerCropGlideFile(url: Any, placeHolder: Int = R.drawable.ic_default_loading) {
+fun ImageView.centerCropGlideFile(url: Any, placeHolder: Int = R.drawable.ic_default_loading) {
     scaleType = ImageView.ScaleType.CENTER_CROP
     Glide
-        .with(context)
-        .asFile()
-        .load(url)
-        .into(object : CustomTarget<File>() {
-            override fun onLoadCleared(placeholder: Drawable?) {
-            }
+            .with(context)
+            .asFile()
+            .load(url)
+            .into(object : CustomTarget<File>() {
+                override fun onLoadCleared(placeholder: Drawable?) {
+                }
 
-            override fun onResourceReady(resource: File, transition: Transition<in File>?) {
-                Glide
-                    .with(context)
-                    .load(resource.absolutePath)
-                    .placeholder(placeHolder)
-                    .into(this@centerCropGlideFile)
-            }
-        })
+                override fun onResourceReady(resource: File, transition: Transition<in File>?) {
+                    Glide
+                            .with(context)
+                            .load(resource.absolutePath)
+                            .placeholder(placeHolder)
+                            .into(this@centerCropGlideFile)
+                }
+            })
 }
 
-inline fun ImageView.glideFile(url: Any, placeHolder: Int = R.drawable.ic_default_loading) {
+fun ImageView.glideFile(url: Any, placeHolder: Int = R.drawable.ic_default_loading) {
     Glide
-        .with(context)
-        .asFile()
-        .load(url)
-        .into(object : CustomTarget<File>() {
-            override fun onLoadCleared(placeholder: Drawable?) {
-            }
+            .with(context)
+            .asFile()
+            .load(url)
+            .into(object : CustomTarget<File>() {
+                override fun onLoadCleared(placeholder: Drawable?) {
+                }
 
-            override fun onResourceReady(resource: File, transition: Transition<in File>?) {
-                Glide
-                    .with(context)
-                    .load(resource.absolutePath)
-                    .placeholder(placeHolder)
-                    .into(this@glideFile)
-            }
-        })
+                override fun onResourceReady(resource: File, transition: Transition<in File>?) {
+                    Glide
+                            .with(context)
+                            .load(resource.absolutePath)
+                            .placeholder(placeHolder)
+                            .into(this@glideFile)
+                }
+            })
 }
 
-inline fun ImageView.centerCropGlide(url: Any, placeHolder: Int = R.drawable.ic_default_loading) {
+fun ImageView.centerCropGlide(url: Any, placeHolder: Int = R.drawable.ic_default_loading) {
     scaleType = ImageView.ScaleType.CENTER_CROP
     Glide.with(context).load(url).placeholder(placeHolder).into(this)
 }
 
-inline fun ImageView.glide(url: Any, placeHolder: Int = R.drawable.ic_default_loading) {
+fun ImageView.glide(url: Any, placeHolder: Int = R.drawable.ic_default_loading) {
     Glide.with(context).load(url).placeholder(placeHolder).into(this)
 }
 
-inline fun Context.clearMemory() {
+fun Context.clearMemory() {
     Glide.get(this).clearMemory()
 }
 
-inline fun Context.clearImageDiskCache() {
+fun Context.clearImageDiskCache() {
     try {
         if (Util.isOnMainThread()) {
             Thread { Glide.get(this).clearDiskCache() }.start()
@@ -77,7 +75,7 @@ inline fun Context.clearImageDiskCache() {
     }
 }
 
-inline fun Context.getDiskCacheSize(): String {
+fun Context.getDiskCacheSize(): String {
     try {
         return getFormatSize(File(cacheDir.toString() + "/" + InternalCacheDiskCacheFactory.DEFAULT_DISK_CACHE_DIR).getFolderSize().toDouble())
     } catch (e: Exception) {
@@ -103,7 +101,7 @@ fun File.getFolderSize(): Long {
     return size
 }
 
-inline fun getFormatSize(size: Double): String {
+fun getFormatSize(size: Double): String {
     val kiloByte = size / 1024
     if (kiloByte < 1) {
         return 0.toString()
