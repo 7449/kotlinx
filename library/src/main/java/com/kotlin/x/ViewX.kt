@@ -2,6 +2,15 @@ package com.kotlin.x
 
 import android.view.View
 
+//View是否显示
+fun View.hasVisible() = visibility == View.VISIBLE
+
+//View显示
+fun View.show() = let { if (!hasVisible()) visibility = View.VISIBLE }
+
+//View隐藏
+fun View.hide() = let { if (hasVisible()) visibility = View.GONE }
+
 fun View?.isGone(): Boolean = this?.visibility == View.GONE
 
 fun View?.isVisible(): Boolean = this?.visibility == View.GONE

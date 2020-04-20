@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.kotlin.x.LogE
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     class TestFragment : Fragment() {
         override fun onAttach(context: Context) {
             super.onAttach(context)
-            LogE()
         }
     }
 }
