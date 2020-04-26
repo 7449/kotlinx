@@ -1,3 +1,5 @@
+@file:JvmName("CameraUtils")
+
 package com.kotlin.x
 
 import android.app.Activity

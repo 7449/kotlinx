@@ -1,6 +1,5 @@
 package com.kotlin.x
 
-import android.content.ActivityNotFoundException
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -18,13 +17,13 @@ import androidx.core.content.ContextCompat
 import java.io.File
 
 fun Context.insertImage(contentValues: ContentValues) =
-    if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
-        contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
-            ?: throw KotlinNullPointerException()
-    } else {
-        contentResolver.insert(MediaStore.Images.Media.INTERNAL_CONTENT_URI, contentValues)
-            ?: throw KotlinNullPointerException()
-    }
+        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+            contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+                    ?: throw KotlinNullPointerException()
+        } else {
+            contentResolver.insert(MediaStore.Images.Media.INTERNAL_CONTENT_URI, contentValues)
+                    ?: throw KotlinNullPointerException()
+        }
 
 fun Context.startActivity(clazz: Class<*>, bundle: Bundle = Bundle.EMPTY) {
     val intent = Intent(this, clazz)
@@ -34,7 +33,7 @@ fun Context.startActivity(clazz: Class<*>, bundle: Bundle = Bundle.EMPTY) {
 }
 
 fun Context.appIntent(packageName: String): Intent? =
-    packageManager.getLaunchIntentForPackage(packageName)
+        packageManager.getLaunchIntentForPackage(packageName)
 
 fun Context.toast(any: Any) = Toast.makeText(this, any.toString(), Toast.LENGTH_SHORT).show()
 
@@ -51,7 +50,7 @@ fun Context.intArray(@ArrayRes id: Int): IntArray = this.resources.getIntArray(i
 fun Context.dimension(@DimenRes id: Int): Float = this.resources.getDimension(id)
 
 fun Context.isLandscape(): Boolean =
-    resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+        resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
 fun Context.minimumDrawable(@DrawableRes id: Int, @ColorInt color: Int): Drawable {
     val drawable = drawable(id) ?: throw KotlinNullPointerException()
@@ -73,12 +72,12 @@ fun Context.findIdByUri(uri: Uri): Long {
         id = split[split.size - 1].toLong()
     } catch (e: Exception) {
         contentResolver.query(uri, arrayOf(MediaStore.Files.FileColumns._ID), null, null, null)
-            .use {
-                val cursor = it ?: return 0L
-                while (cursor.moveToNext()) {
-                    id = cursor.getLong(cursor.getColumnIndex(MediaStore.Files.FileColumns._ID))
+                .use {
+                    val cursor = it ?: return 0L
+                    while (cursor.moveToNext()) {
+                        id = cursor.getLong(cursor.getColumnIndex(MediaStore.Files.FileColumns._ID))
+                    }
                 }
-            }
     }
     return id
 }
@@ -103,13 +102,22 @@ fun Context.findFilePathToUri(uri: Uri): String? {
     return null
 }
 
-fun Context.gotoStore(): Boolean {
+fun Context.openVideo(uri: Uri, error: () -> Unit) {
+    try {
+        val openVideo = Intent(Intent.ACTION_VIEW)
+        openVideo.setDataAndType(uri, "video/*")
+        startActivity(openVideo)
+    } catch (e: Exception) {
+        error.invoke()
+    }
+}
+
+fun Context.gotoStore(error: () -> Unit) {
     val goToMarket = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
-    return try {
+    try {
         goToMarket.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(goToMarket)
-        true
-    } catch (ignored: ActivityNotFoundException) {
-        false
+    } catch (ignored: Exception) {
+        error.invoke()
     }
 }

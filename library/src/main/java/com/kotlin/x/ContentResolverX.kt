@@ -1,3 +1,5 @@
+@file:JvmName("ContentResolverUtils")
+
 package com.kotlin.x
 
 import android.content.ContentResolver

@@ -1,3 +1,5 @@
+@file:JvmName("ActivityUtils")
+
 package com.kotlin.x
 
 import android.app.Activity
@@ -37,16 +39,23 @@ fun AppCompatActivity.findFragmentByTag(tag: String, of: (fragment: Fragment?) -
     of.invoke(supportFragmentManager.findFragmentByTag(tag))
 }
 
+fun <T : Fragment> AppCompatActivity.findFragmentByTag(tag: String, ifNone: (String) -> T): T =
+    supportFragmentManager.findFragmentByTag(tag) as T?
+        ?: ifNone(tag)
+
 fun AppCompatActivity.showFragment(fragment: Fragment) =
     supportFragmentManager.beginTransaction().show(fragment).commitAllowingStateLoss()
+
+fun AppCompatActivity.hideFragment(fragment: Fragment) =
+    supportFragmentManager.beginTransaction().hide(fragment).commitAllowingStateLoss()
 
 fun AppCompatActivity.addFragment(id: Int, fragment: Fragment) =
     supportFragmentManager.beginTransaction().add(id, fragment, fragment.javaClass.simpleName)
         .commitAllowingStateLoss()
 
-fun <T : Fragment> AppCompatActivity.findFragmentByTag(tag: String, ifNone: (String) -> T): T =
-    supportFragmentManager.findFragmentByTag(tag) as T?
-        ?: ifNone(tag)
+fun AppCompatActivity.replaceFragment(id: Int, fragment: Fragment) =
+    supportFragmentManager.beginTransaction().replace(id, fragment, fragment.javaClass.simpleName)
+        .commitAllowingStateLoss()
 
 inline fun <reified T : Parcelable> Activity.getParcelableArrayList(key: String) =
     intent.extras?.getParcelableArrayList(key)

@@ -1,3 +1,5 @@
+@file:JvmName("BitmapUtils")
+
 package com.kotlin.x
 
 import android.graphics.Bitmap
@@ -24,7 +26,10 @@ fun String.bitmapToBase64HeaderPng(quality: Int = 100): String {
     val bitmap = BitmapFactory.decodeFile(this)
     val byteArrayOutputStream = ByteArrayOutputStream()
     bitmap.compress(Bitmap.CompressFormat.JPEG, quality, byteArrayOutputStream)
-    return "data:image/jpeg;base64," + Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.NO_WRAP)
+    return "data:image/jpeg;base64," + Base64.encodeToString(
+        byteArrayOutputStream.toByteArray(),
+        Base64.NO_WRAP
+    )
 }
 
 /**
@@ -43,7 +48,10 @@ fun String.bitmapToBase64(quality: Int = 100): String {
 fun Bitmap.bitmapToBase64HeaderPng(quality: Int = 100): String {
     val byteArrayOutputStream = ByteArrayOutputStream()
     compress(Bitmap.CompressFormat.PNG, quality, byteArrayOutputStream)
-    return "data:image/png;base64," + Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.NO_WRAP)
+    return "data:image/png;base64," + Base64.encodeToString(
+        byteArrayOutputStream.toByteArray(),
+        Base64.NO_WRAP
+    )
 }
 
 /**

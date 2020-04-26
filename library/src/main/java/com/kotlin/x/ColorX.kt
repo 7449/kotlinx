@@ -1,3 +1,5 @@
+@file:JvmName("ColorUtils")
+
 package com.kotlin.x
 
 import android.content.Context
