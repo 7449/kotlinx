@@ -5,11 +5,11 @@ package com.kotlin.x
 import android.content.Context
 import android.widget.Toast
 
-val utf8Coding: String
+val utf8CodingExpand: String
     get() = "utf-8"
 
-val textHtmlMimeType: String
+val textHtmlMimeTypeExpand: String
     get() = "text/html"
 
-fun String.toast(context: Context): Unit =
+fun String.toastExpand(context: Context): Unit =
     Toast.makeText(context, this, Toast.LENGTH_SHORT).show()

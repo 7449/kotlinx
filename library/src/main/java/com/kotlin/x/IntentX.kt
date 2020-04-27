@@ -7,76 +7,82 @@ import android.os.Bundle
 import android.os.Parcelable
 import java.io.Serializable
 
-fun Intent?.orEmpty(): Intent = this ?: Intent()
+fun Intent?.orEmptyExpand(): Intent = this ?: Intent()
 
-fun Intent?.getBoolean(key: String): Boolean =
+fun Intent?.getBooleanExpand(key: String): Boolean =
     getBooleanOrDefault(key, false)
 
-fun Intent?.getByte(key: String): Byte =
+fun Intent?.getByteExpand(key: String): Byte =
     getByteOrDefault(key, 0)
 
-fun Intent?.getChar(key: String): Char =
+fun Intent?.getCharExpand(key: String): Char =
     getCharOrDefault(key, 'a')
 
-fun Intent?.getShort(key: String): Short =
+fun Intent?.getShortExpand(key: String): Short =
     getShortOrDefault(key, 0)
 
-fun Intent?.getInt(key: String): Int =
+fun Intent?.getIntExpand(key: String): Int =
     getIntOrDefault(key, 0)
 
-fun Intent?.getLong(key: String): Long =
+fun Intent?.getLongExpand(key: String): Long =
     getLongOrDefault(key, 0)
 
-fun Intent?.getFloat(key: String): Float =
+fun Intent?.getFloatExpand(key: String): Float =
     getFloatOrDefault(key, 0F)
 
-fun Intent?.getDouble(key: String): Double =
+fun Intent?.getDoubleExpand(key: String): Double =
     getDoubleOrDefault(key, 0.0)
 
-fun Intent?.getString(key: String): String =
+fun Intent?.getStringExpand(key: String): String =
     getStringOrDefault(key, "")
 
-fun Intent?.getCharSequence(key: String): CharSequence =
+fun Intent?.getCharSequenceExpand(key: String): CharSequence =
     getCharSequenceOrDefault(key, "")
 
-fun Intent?.getIntArrayList(key: String): ArrayList<Int> =
+fun Intent?.getIntArrayListExpand(key: String): ArrayList<Int> =
     getIntArrayListOrDefault(key, ArrayList())
 
-fun Intent?.getStringArrayList(key: String): ArrayList<String> =
+fun Intent?.getStringArrayListExpand(key: String): ArrayList<String> =
     getStringArrayListOrDefault(key, ArrayList())
 
-fun Intent?.getCharSequenceArrayList(key: String): ArrayList<CharSequence> =
+fun Intent?.getCharSequenceArrayListExpand(key: String): ArrayList<CharSequence> =
     getCharSequenceArrayListOrDefault(key, ArrayList())
 
-fun Intent?.getBooleanArray(key: String): BooleanArray =
+fun Intent?.getBooleanArrayExpand(key: String): BooleanArray =
     getBooleanArrayOrDefault(key, booleanArrayOf())
 
-fun Intent?.getByteArray(key: String): ByteArray =
+fun Intent?.getByteArrayExpand(key: String): ByteArray =
     getByteArrayOrDefault(key, byteArrayOf())
 
-fun Intent?.getShortArray(key: String): ShortArray =
+fun Intent?.getShortArrayExpand(key: String): ShortArray =
     getShortArrayOrDefault(key, shortArrayOf())
 
-fun Intent?.getCharArray(key: String): CharArray =
+fun Intent?.getCharArrayExpand(key: String): CharArray =
     getCharArrayOrDefault(key, charArrayOf())
 
-fun Intent?.getIntArray(key: String): IntArray =
+fun Intent?.getIntArrayExpand(key: String): IntArray =
     getIntArrayOrDefault(key, intArrayOf())
 
-fun Intent?.getLongArray(key: String): LongArray =
+fun Intent?.getLongArrayExpand(key: String): LongArray =
     getLongArrayOrDefault(key, longArrayOf())
 
-fun Intent?.getFloatArray(key: String): FloatArray =
+fun Intent?.getFloatArrayExpand(key: String): FloatArray =
     getFloatArrayOrDefault(key, floatArrayOf())
 
-fun Intent?.getDoubleArray(key: String): DoubleArray =
+fun Intent?.getDoubleArrayExpand(key: String): DoubleArray =
     getDoubleArrayOrDefault(key, doubleArrayOf())
 
-fun Intent?.getStringArray(key: String): Array<String> =
+fun Intent?.getStringArrayExpand(key: String): Array<String> =
     getStringArrayOrDefault(key, arrayOf())
 
-fun Intent?.getCharSequenceArray(key: String): Array<CharSequence> =
+fun Intent?.getCharSequenceArrayExpand(key: String): Array<CharSequence> =
     getCharSequenceArrayOrDefault(key, arrayOf())
+
+inline fun <reified T : Parcelable> Intent?.getParcelableArrayExpand(key: String): Array<in T> =
+    getParcelableArrayOrDefault(key, arrayOf())
+
+fun <T : Parcelable> Intent?.getParcelableArrayListExpand(key: String): ArrayList<T> =
+    getParcelableArrayListOrDefault(key, ArrayList())
 
 fun Intent?.getBooleanOrDefault(key: String, defaultValue: Boolean): Boolean =
     getBooleanOrDefault(key) { defaultValue }
@@ -116,8 +122,8 @@ fun <T : Parcelable> Intent?.getParcelableOrDefault(key: String, defaultValue: P
 
 fun <T : Parcelable> Intent?.getParcelableArrayOrDefault(
     key: String,
-    defaultValue: Array<T>
-): Array<out Parcelable> = getParcelableArrayOrDefault(key) { defaultValue }
+    defaultValue: Array<in T>
+): Array<in T> = getParcelableArrayOrDefault(key) { defaultValue }
 
 fun <T : Parcelable> Intent?.getParcelableArrayListOrDefault(
     key: String,
@@ -211,8 +217,8 @@ fun <T : Parcelable> Intent?.getParcelableOrDefault(key: String, ifNone: () -> T
 
 fun <T : Parcelable> Intent?.getParcelableArrayOrDefault(
     key: String,
-    ifNone: () -> Array<T>
-): Array<out Parcelable> = this?.getParcelableArrayExtra(key) ?: ifNone.invoke()
+    ifNone: () -> Array<in T>
+): Array<in T> = this?.getParcelableArrayExtra(key) ?: ifNone.invoke()
 
 fun <T : Parcelable> Intent?.getParcelableArrayListOrDefault(
     key: String,

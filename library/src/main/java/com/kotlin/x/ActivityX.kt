@@ -9,49 +9,50 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
-fun Activity.hideStatusBar() {
+fun Activity.hideStatusBarExpand() {
     val attrs = window.attributes
     attrs.flags = attrs.flags or WindowManager.LayoutParams.FLAG_FULLSCREEN
     window.attributes = attrs
 }
 
-fun Activity.showStatusBar() {
+fun Activity.showStatusBarExpand() {
     val attrs = window.attributes
     attrs.flags = attrs.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN
     window.attributes = attrs
 }
 
-fun Activity.square(count: Int): Int {
+fun Activity.squareExpand(count: Int): Int {
     val dm = DisplayMetrics()
     window.windowManager.defaultDisplay.getMetrics(dm)
     return dm.widthPixels / count
 }
 
-fun Activity.openCamera(fileUri: Uri, video: Boolean): CameraStatus =
-    if (!permissionCamera() || !permissionStorage()) CameraStatus.PERMISSION else openCamera(
+fun Activity.openCameraExpand(fileUri: Uri, video: Boolean): CameraStatus =
+    if (!permissionCameraExpand() || !permissionStorageExpand()) CameraStatus.PERMISSION else openCameraExpand(
         this,
         fileUri,
         video
     )
 
-fun AppCompatActivity.findFragmentByTag(tag: String, of: (fragment: Fragment?) -> Unit) {
+fun AppCompatActivity.findFragmentByTagExpand(tag: String, of: (fragment: Fragment?) -> Unit) {
     of.invoke(supportFragmentManager.findFragmentByTag(tag))
 }
 
-fun <T : Fragment> AppCompatActivity.findFragmentByTag(tag: String, ifNone: (String) -> T): T =
-    supportFragmentManager.findFragmentByTag(tag) as T?
-        ?: ifNone(tag)
+fun <T : Fragment> AppCompatActivity.findFragmentByTagExpand(
+    tag: String,
+    ifNone: (String) -> T
+): T = supportFragmentManager.findFragmentByTag(tag) as T? ?: ifNone(tag)
 
-fun AppCompatActivity.showFragment(fragment: Fragment): Int =
+fun AppCompatActivity.showFragmentExpand(fragment: Fragment): Int =
     supportFragmentManager.beginTransaction().show(fragment).commitAllowingStateLoss()
 
-fun AppCompatActivity.hideFragment(fragment: Fragment): Int =
+fun AppCompatActivity.hideFragmentExpand(fragment: Fragment): Int =
     supportFragmentManager.beginTransaction().hide(fragment).commitAllowingStateLoss()
 
-fun AppCompatActivity.addFragment(id: Int, fragment: Fragment): Int =
+fun AppCompatActivity.addFragmentExpand(id: Int, fragment: Fragment): Int =
     supportFragmentManager.beginTransaction().add(id, fragment, fragment.javaClass.simpleName)
         .commitAllowingStateLoss()
 
-fun AppCompatActivity.replaceFragment(id: Int, fragment: Fragment): Int =
+fun AppCompatActivity.replaceFragmentExpand(id: Int, fragment: Fragment): Int =
     supportFragmentManager.beginTransaction().replace(id, fragment, fragment.javaClass.simpleName)
         .commitAllowingStateLoss()

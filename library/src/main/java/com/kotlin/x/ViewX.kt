@@ -4,50 +4,50 @@ package com.kotlin.x
 
 import android.view.View
 
-fun View.hasVisible(): Boolean = visibility == View.VISIBLE
+fun View.hasVisibleExpand(): Boolean = visibility == View.VISIBLE
 
-fun View.show(): Unit = let { if (!hasVisible()) visibility = View.VISIBLE }
+fun View.showExpand(): Unit = let { if (!hasVisibleExpand()) visibility = View.VISIBLE }
 
-fun View.hide(): Unit = let { if (hasVisible()) visibility = View.GONE }
+fun View.hideExpand(): Unit = let { if (hasVisibleExpand()) visibility = View.GONE }
 
-fun View?.isGone(): Boolean = this?.visibility == View.GONE
+fun View?.isGoneExpand(): Boolean = this?.visibility == View.GONE
 
-fun View?.isVisible(): Boolean = this?.visibility == View.GONE
+fun View?.isVisibleExpand(): Boolean = this?.visibility == View.GONE
 
-fun View?.isInVisible(): Boolean = this?.visibility == View.INVISIBLE
+fun View?.isInVisibleExpand(): Boolean = this?.visibility == View.INVISIBLE
 
-fun View?.gone() {
-    if (!isGone()) {
+fun View?.goneExpand() {
+    if (!isGoneExpand()) {
         this?.visibility = View.GONE
     }
 }
 
-fun View?.visible() {
-    if (!isVisible()) {
+fun View?.visibleExpand() {
+    if (!isVisibleExpand()) {
         this?.visibility = View.VISIBLE
     }
 }
 
-fun View?.inVisible() {
-    if (!isInVisible()) {
+fun View?.inVisibleExpand() {
+    if (!isInVisibleExpand()) {
         this?.visibility = View.INVISIBLE
     }
 }
 
 fun goneAllViews(vararg views: View?) {
     for (view in views) {
-        view.gone()
+        view.goneExpand()
     }
 }
 
 fun visibleAllViews(vararg views: View?) {
     for (view in views) {
-        view.visible()
+        view.visibleExpand()
     }
 }
 
 fun invisibleView(vararg views: View?) {
     for (view in views) {
-        view.inVisible()
+        view.inVisibleExpand()
     }
 }

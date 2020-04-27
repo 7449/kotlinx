@@ -12,87 +12,96 @@ import android.util.SparseArray
 import androidx.annotation.RequiresApi
 import java.io.Serializable
 
-fun Bundle?.orEmpty(): Bundle = this ?: Bundle.EMPTY
+fun Bundle?.orEmptyExpand(): Bundle = this ?: Bundle.EMPTY
 
-fun Bundle?.get(key: String): Any =
+fun Bundle?.getExpand(key: String): Any =
     getOrDefault(key, Any())
 
-fun Bundle?.getBoolean(key: String): Boolean =
+fun Bundle?.getBooleanExpand(key: String): Boolean =
     getBooleanOrDefault(key, false)
 
-fun Bundle?.getByte(key: String): Byte =
+fun Bundle?.getByteExpand(key: String): Byte =
     getByteOrDefault(key, 0)
 
-fun Bundle?.getChar(key: String): Char =
+fun Bundle?.getCharExpand(key: String): Char =
     getCharOrDefault(key, 'a')
 
-fun Bundle?.getShort(key: String): Short =
+fun Bundle?.getShortExpand(key: String): Short =
     getShortOrDefault(key, 0)
 
-fun Bundle?.getInt(key: String): Int =
+fun Bundle?.getIntExpand(key: String): Int =
     getIntOrDefault(key, 0)
 
-fun Bundle?.getLong(key: String): Long =
+fun Bundle?.getLongExpand(key: String): Long =
     getLongOrDefault(key, 0)
 
-fun Bundle?.getFloat(key: String): Float =
+fun Bundle?.getFloatExpand(key: String): Float =
     getFloatOrDefault(key, 0F)
 
-fun Bundle?.getDouble(key: String): Double =
+fun Bundle?.getDoubleExpand(key: String): Double =
     getDoubleOrDefault(key, 0.0)
 
-fun Bundle?.getString(key: String): String =
+fun Bundle?.getStringExpand(key: String): String =
     getStringOrDefault(key, "")
 
-fun Bundle?.getCharSequence(key: String): CharSequence =
+fun Bundle?.getCharSequenceExpand(key: String): CharSequence =
     getCharSequenceOrDefault(key, "")
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-fun Bundle?.getSize(key: String): Size =
+fun Bundle?.getSizeExpand(key: String): Size =
     getSizeOrDefault(key, Size(0, 0))
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-fun Bundle?.getSizeF(key: String): SizeF =
+fun Bundle?.getSizeFExpand(key: String): SizeF =
     getSizeFOrDefault(key, SizeF(0F, 0F))
 
-fun Bundle?.getIntArrayList(key: String): ArrayList<Int> =
+fun Bundle?.getIntArrayListExpand(key: String): ArrayList<Int> =
     getIntArrayListOrDefault(key, ArrayList())
 
-fun Bundle?.getStringArrayList(key: String): ArrayList<String> =
+fun Bundle?.getStringArrayListExpand(key: String): ArrayList<String> =
     getStringArrayListOrDefault(key, ArrayList())
 
-fun Bundle?.getCharSequenceArrayList(key: String): ArrayList<CharSequence> =
+fun Bundle?.getCharSequenceArrayListExpand(key: String): ArrayList<CharSequence> =
     getCharSequenceArrayListOrDefault(key, ArrayList())
 
-fun Bundle?.getBooleanArray(key: String): BooleanArray =
+fun Bundle?.getBooleanArrayExpand(key: String): BooleanArray =
     getBooleanArrayOrDefault(key, booleanArrayOf())
 
-fun Bundle?.getByteArray(key: String): ByteArray =
+fun Bundle?.getByteArrayExpand(key: String): ByteArray =
     getByteArrayOrDefault(key, byteArrayOf())
 
-fun Bundle?.getShortArray(key: String): ShortArray =
+fun Bundle?.getShortArrayExpand(key: String): ShortArray =
     getShortArrayOrDefault(key, shortArrayOf())
 
-fun Bundle?.getCharArray(key: String): CharArray =
+fun Bundle?.getCharArrayExpand(key: String): CharArray =
     getCharArrayOrDefault(key, charArrayOf())
 
-fun Bundle?.getIntArray(key: String): IntArray =
+fun Bundle?.getIntArrayExpand(key: String): IntArray =
     getIntArrayOrDefault(key, intArrayOf())
 
-fun Bundle?.getLongArray(key: String): LongArray =
+fun Bundle?.getLongArrayExpand(key: String): LongArray =
     getLongArrayOrDefault(key, longArrayOf())
 
-fun Bundle?.getFloatArray(key: String): FloatArray =
+fun Bundle?.getFloatArrayExpand(key: String): FloatArray =
     getFloatArrayOrDefault(key, floatArrayOf())
 
-fun Bundle?.getDoubleArray(key: String): DoubleArray =
+fun Bundle?.getDoubleArrayExpand(key: String): DoubleArray =
     getDoubleArrayOrDefault(key, doubleArrayOf())
 
-fun Bundle?.getStringArray(key: String): Array<String> =
+fun Bundle?.getStringArrayExpand(key: String): Array<String> =
     getStringArrayOrDefault(key, arrayOf())
 
-fun Bundle?.getCharSequenceArray(key: String): Array<CharSequence> =
+fun Bundle?.getCharSequenceArrayExpand(key: String): Array<CharSequence> =
     getCharSequenceArrayOrDefault(key, arrayOf())
+
+inline fun <reified T : Parcelable> Bundle?.getParcelableArrayExpand(key: String): Array<in T> =
+    getParcelableArrayOrDefault(key, arrayOf())
+
+fun <T : Parcelable> Bundle?.getParcelableArrayListExpand(key: String): ArrayList<T> =
+    getParcelableArrayListOrDefault(key, ArrayList())
+
+fun <T : Parcelable> Bundle?.getSparseParcelableArrayExpand(key: String): SparseArray<T> =
+    getSparseParcelableArrayOrDefault(key, SparseArray())
 
 fun Bundle?.getOrDefault(key: String, defaultValue: Any): Any =
     getOrDefault(key) { defaultValue }
@@ -135,8 +144,8 @@ fun <T : Parcelable> Bundle?.getParcelableOrDefault(key: String, defaultValue: P
 
 fun <T : Parcelable> Bundle?.getParcelableArrayOrDefault(
     key: String,
-    defaultValue: Array<T>
-): Array<out Parcelable> = getParcelableArrayOrDefault(key) { defaultValue }
+    defaultValue: Array<in T>
+): Array<in T> = getParcelableArrayOrDefault(key) { defaultValue }
 
 fun <T : Parcelable> Bundle?.getParcelableArrayListOrDefault(
     key: String,
@@ -243,8 +252,8 @@ fun <T : Parcelable> Bundle?.getParcelableOrDefault(key: String, ifNone: () -> T
 
 fun <T : Parcelable> Bundle?.getParcelableArrayOrDefault(
     key: String,
-    ifNone: () -> Array<T>
-): Array<out Parcelable> = this?.getParcelableArray(key) ?: ifNone.invoke()
+    ifNone: () -> Array<in T>
+): Array<in T> = this?.getParcelableArray(key) ?: ifNone.invoke()
 
 fun <T : Parcelable> Bundle?.getParcelableArrayListOrDefault(
     key: String,

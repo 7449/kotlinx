@@ -7,9 +7,9 @@ import android.view.Window
 import androidx.annotation.ColorInt
 
 fun Window.statusBarColor(@ColorInt color: Int) {
-    if (hasM()) {
+    if (hasMExpand()) {
         statusBarColor = color
-        if (color.isLightColor()) {
+        if (color.isLightColorExpand()) {
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         } else {
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE

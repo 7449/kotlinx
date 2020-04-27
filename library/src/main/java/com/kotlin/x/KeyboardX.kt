@@ -8,12 +8,12 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import java.lang.reflect.Method
 
-fun EditText.offKeyboard() {
+fun EditText.offKeyboardExpand() {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
     imm?.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_IMPLICIT_ONLY)
 }
 
-fun EditText.openKeyboard() {
+fun EditText.openKeyboardExpand() {
     isFocusable = true
     isFocusableInTouchMode = true
     requestFocus()
@@ -21,7 +21,7 @@ fun EditText.openKeyboard() {
     inputManager?.showSoftInput(this, 0)
 }
 
-fun EditText.forceOpenKeyBoard() {
+fun EditText.forceOpenKeyBoardExpand() {
     isFocusable = true
     isFocusableInTouchMode = true
     requestFocus()
@@ -30,7 +30,7 @@ fun EditText.forceOpenKeyBoard() {
     imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS)
 }
 
-fun EditText.disableShowSoftInput() {
+fun EditText.disableShowSoftInputExpand() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         showSoftInputOnFocus = false
         return

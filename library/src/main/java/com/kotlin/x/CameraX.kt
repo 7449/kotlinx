@@ -21,7 +21,7 @@ enum class CameraStatus {
     ERROR,
 }
 
-fun openCamera(root: Any, fileUri: Uri, video: Boolean): CameraStatus {
+fun openCameraExpand(root: Any, fileUri: Uri, video: Boolean): CameraStatus {
     val activity = when (root) {
         is Activity -> root
         is Fragment -> root.requireActivity()

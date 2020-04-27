@@ -15,7 +15,7 @@ enum class PermissionCode(val code: Int) {
 }
 
 //判断权限,如果有返回true,没有返回false并直接请求
-fun Activity.permission(permissions: String, code: Int): Boolean {
+fun Activity.permissionExpand(permissions: String, code: Int): Boolean {
     if (ContextCompat.checkSelfPermission(this, permissions) != PackageManager.PERMISSION_GRANTED) {
         ActivityCompat.requestPermissions(this, arrayOf(permissions), code)
         return false
@@ -24,7 +24,7 @@ fun Activity.permission(permissions: String, code: Int): Boolean {
 }
 
 //判断权限,如果有返回true,没有返回false并直接请求
-fun Fragment.permission(permissions: String, code: Int): Boolean {
+fun Fragment.permissionExpand(permissions: String, code: Int): Boolean {
     if (ContextCompat.checkSelfPermission(
             requireActivity(),
             permissions
@@ -37,17 +37,17 @@ fun Fragment.permission(permissions: String, code: Int): Boolean {
 }
 
 //Activity判断存储权限
-fun Activity.permissionStorage(): Boolean =
-    permission(Manifest.permission.WRITE_EXTERNAL_STORAGE, PermissionCode.WRITE.code)
+fun Activity.permissionStorageExpand(): Boolean =
+    permissionExpand(Manifest.permission.WRITE_EXTERNAL_STORAGE, PermissionCode.WRITE.code)
 
 //Activity判断拍照权限
-fun Activity.permissionCamera(): Boolean =
-    permission(Manifest.permission.CAMERA, PermissionCode.READ.code)
+fun Activity.permissionCameraExpand(): Boolean =
+    permissionExpand(Manifest.permission.CAMERA, PermissionCode.READ.code)
 
 //Fragment判断存储权限
-fun Fragment.permissionStorage(): Boolean =
-    permission(Manifest.permission.WRITE_EXTERNAL_STORAGE, PermissionCode.WRITE.code)
+fun Fragment.permissionStorageExpand(): Boolean =
+    permissionExpand(Manifest.permission.WRITE_EXTERNAL_STORAGE, PermissionCode.WRITE.code)
 
 //Fragment判断拍照权限
-fun Fragment.permissionCamera(): Boolean =
-    permission(Manifest.permission.CAMERA, PermissionCode.READ.code)
+fun Fragment.permissionCameraExpand(): Boolean =
+    permissionExpand(Manifest.permission.CAMERA, PermissionCode.READ.code)
