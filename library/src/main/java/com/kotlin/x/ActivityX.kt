@@ -4,7 +4,6 @@ package com.kotlin.x
 
 import android.app.Activity
 import android.net.Uri
-import android.os.Parcelable
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +27,7 @@ fun Activity.square(count: Int): Int {
     return dm.widthPixels / count
 }
 
-fun Activity.openCamera(fileUri: Uri, video: Boolean) =
+fun Activity.openCamera(fileUri: Uri, video: Boolean): CameraStatus =
     if (!permissionCamera() || !permissionStorage()) CameraStatus.PERMISSION else openCamera(
         this,
         fileUri,
@@ -43,20 +42,16 @@ fun <T : Fragment> AppCompatActivity.findFragmentByTag(tag: String, ifNone: (Str
     supportFragmentManager.findFragmentByTag(tag) as T?
         ?: ifNone(tag)
 
-fun AppCompatActivity.showFragment(fragment: Fragment) =
+fun AppCompatActivity.showFragment(fragment: Fragment): Int =
     supportFragmentManager.beginTransaction().show(fragment).commitAllowingStateLoss()
 
-fun AppCompatActivity.hideFragment(fragment: Fragment) =
+fun AppCompatActivity.hideFragment(fragment: Fragment): Int =
     supportFragmentManager.beginTransaction().hide(fragment).commitAllowingStateLoss()
 
-fun AppCompatActivity.addFragment(id: Int, fragment: Fragment) =
+fun AppCompatActivity.addFragment(id: Int, fragment: Fragment): Int =
     supportFragmentManager.beginTransaction().add(id, fragment, fragment.javaClass.simpleName)
         .commitAllowingStateLoss()
 
-fun AppCompatActivity.replaceFragment(id: Int, fragment: Fragment) =
+fun AppCompatActivity.replaceFragment(id: Int, fragment: Fragment): Int =
     supportFragmentManager.beginTransaction().replace(id, fragment, fragment.javaClass.simpleName)
         .commitAllowingStateLoss()
-
-inline fun <reified T : Parcelable> Activity.getParcelableArrayList(key: String) =
-    intent.extras?.getParcelableArrayList(key)
-        ?: ArrayList<T>()

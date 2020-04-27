@@ -1,3 +1,5 @@
+@file:JvmName("PermissionUtils")
+
 package com.kotlin.x
 
 import android.Manifest
@@ -35,15 +37,17 @@ fun Fragment.permission(permissions: String, code: Int): Boolean {
 }
 
 //Activity判断存储权限
-fun Activity.permissionStorage() =
+fun Activity.permissionStorage(): Boolean =
     permission(Manifest.permission.WRITE_EXTERNAL_STORAGE, PermissionCode.WRITE.code)
 
 //Activity判断拍照权限
-fun Activity.permissionCamera() = permission(Manifest.permission.CAMERA, PermissionCode.READ.code)
+fun Activity.permissionCamera(): Boolean =
+    permission(Manifest.permission.CAMERA, PermissionCode.READ.code)
 
 //Fragment判断存储权限
-fun Fragment.permissionStorage() =
+fun Fragment.permissionStorage(): Boolean =
     permission(Manifest.permission.WRITE_EXTERNAL_STORAGE, PermissionCode.WRITE.code)
 
 //Fragment判断拍照权限
-fun Fragment.permissionCamera() = permission(Manifest.permission.CAMERA, PermissionCode.READ.code)
+fun Fragment.permissionCamera(): Boolean =
+    permission(Manifest.permission.CAMERA, PermissionCode.READ.code)

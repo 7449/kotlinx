@@ -1,3 +1,5 @@
+@file:JvmName("KeyboardUtils")
+
 package com.kotlin.x
 
 import android.content.Context

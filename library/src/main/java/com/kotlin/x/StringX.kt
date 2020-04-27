@@ -1,3 +1,5 @@
+@file:JvmName("StringUtils")
+
 package com.kotlin.x
 
 import android.content.Context
@@ -9,4 +11,5 @@ val utf8Coding: String
 val textHtmlMimeType: String
     get() = "text/html"
 
-fun String.toast(context: Context) = Toast.makeText(context, this, Toast.LENGTH_SHORT).show()
+fun String.toast(context: Context): Unit =
+    Toast.makeText(context, this, Toast.LENGTH_SHORT).show()

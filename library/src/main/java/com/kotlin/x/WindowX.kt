@@ -1,3 +1,5 @@
+@file:JvmName("WindowUtils")
+
 package com.kotlin.x
 
 import android.view.View
