@@ -21,25 +21,25 @@ import java.io.File
 import java.io.InputStreamReader
 import java.util.concurrent.Executor
 
-val Context.dataDir: File?
+val Context.dataDirCompat: File?
     get() = ContextCompat.getDataDir(this)
 
-val Context.obbDirs: Array<File>
+val Context.obbDirsCompat: Array<File>
     get() = ContextCompat.getObbDirs(this)
 
-val Context.externalCacheDirs: Array<File>
+val Context.externalCacheDirsCompat: Array<File>
     get() = ContextCompat.getExternalCacheDirs(this)
 
-val Context.noBackupFilesDir: File?
+val Context.noBackupFilesDirCompat: File?
     get() = ContextCompat.getNoBackupFilesDir(this)
 
-val Context.codeCacheDir: File
+val Context.codeCacheDirCompat: File
     get() = ContextCompat.getCodeCacheDir(this)
 
-val Context.isDeviceProtectedStorage: Boolean
+val Context.isDeviceProtectedStorageCompat: Boolean
     get() = ContextCompat.isDeviceProtectedStorage(this)
 
-val Context.mainExecutor: Executor
+val Context.mainExecutorCompat: Executor
     get() = ContextCompat.getMainExecutor(this)
 
 fun Context.toast(any: Any): Unit =
