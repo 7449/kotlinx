@@ -1,5 +1,7 @@
 @file:JvmName("TextViewUtils")
 
+// @see androidx.core:core-ktx:version   androidx.core.widget.TextView
+// TextView expand
 package com.kotlin.x
 
 import android.text.Editable
