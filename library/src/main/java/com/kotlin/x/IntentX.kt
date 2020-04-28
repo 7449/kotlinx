@@ -1,4 +1,5 @@
 @file:JvmName("IntentUtils")
+@file:Suppress("UNCHECKED_CAST")
 
 package com.kotlin.x
 
@@ -10,175 +11,205 @@ import java.io.Serializable
 fun Intent?.orEmptyExpand(): Intent = this ?: Intent()
 
 fun Intent?.getBooleanExpand(key: String): Boolean =
-    getBooleanOrDefault(key, false)
+    getBooleanOrDefault(key)
 
 fun Intent?.getByteExpand(key: String): Byte =
-    getByteOrDefault(key, 0)
+    getByteOrDefault(key)
 
 fun Intent?.getCharExpand(key: String): Char =
-    getCharOrDefault(key, 'a')
+    getCharOrDefault(key)
 
 fun Intent?.getShortExpand(key: String): Short =
-    getShortOrDefault(key, 0)
+    getShortOrDefault(key)
 
 fun Intent?.getIntExpand(key: String): Int =
-    getIntOrDefault(key, 0)
+    getIntOrDefault(key)
 
 fun Intent?.getLongExpand(key: String): Long =
-    getLongOrDefault(key, 0)
+    getLongOrDefault(key)
 
 fun Intent?.getFloatExpand(key: String): Float =
-    getFloatOrDefault(key, 0F)
+    getFloatOrDefault(key)
 
 fun Intent?.getDoubleExpand(key: String): Double =
-    getDoubleOrDefault(key, 0.0)
+    getDoubleOrDefault(key)
 
 fun Intent?.getStringExpand(key: String): String =
-    getStringOrDefault(key, "")
+    getStringOrDefault(key)
 
 fun Intent?.getCharSequenceExpand(key: String): CharSequence =
-    getCharSequenceOrDefault(key, "")
+    getCharSequenceOrDefault(key)
 
 fun Intent?.getIntArrayListExpand(key: String): ArrayList<Int> =
-    getIntArrayListOrDefault(key, ArrayList())
+    getIntArrayListOrDefault(key)
 
 fun Intent?.getStringArrayListExpand(key: String): ArrayList<String> =
-    getStringArrayListOrDefault(key, ArrayList())
+    getStringArrayListOrDefault(key)
 
 fun Intent?.getCharSequenceArrayListExpand(key: String): ArrayList<CharSequence> =
-    getCharSequenceArrayListOrDefault(key, ArrayList())
+    getCharSequenceArrayListOrDefault(key)
 
 fun Intent?.getBooleanArrayExpand(key: String): BooleanArray =
-    getBooleanArrayOrDefault(key, booleanArrayOf())
+    getBooleanArrayOrDefault(key)
 
 fun Intent?.getByteArrayExpand(key: String): ByteArray =
-    getByteArrayOrDefault(key, byteArrayOf())
+    getByteArrayOrDefault(key)
 
 fun Intent?.getShortArrayExpand(key: String): ShortArray =
-    getShortArrayOrDefault(key, shortArrayOf())
+    getShortArrayOrDefault(key)
 
 fun Intent?.getCharArrayExpand(key: String): CharArray =
-    getCharArrayOrDefault(key, charArrayOf())
+    getCharArrayOrDefault(key)
 
 fun Intent?.getIntArrayExpand(key: String): IntArray =
-    getIntArrayOrDefault(key, intArrayOf())
+    getIntArrayOrDefault(key)
 
 fun Intent?.getLongArrayExpand(key: String): LongArray =
-    getLongArrayOrDefault(key, longArrayOf())
+    getLongArrayOrDefault(key)
 
 fun Intent?.getFloatArrayExpand(key: String): FloatArray =
-    getFloatArrayOrDefault(key, floatArrayOf())
+    getFloatArrayOrDefault(key)
 
 fun Intent?.getDoubleArrayExpand(key: String): DoubleArray =
-    getDoubleArrayOrDefault(key, doubleArrayOf())
+    getDoubleArrayOrDefault(key)
 
 fun Intent?.getStringArrayExpand(key: String): Array<String> =
-    getStringArrayOrDefault(key, arrayOf())
+    getStringArrayOrDefault(key)
 
 fun Intent?.getCharSequenceArrayExpand(key: String): Array<CharSequence> =
-    getCharSequenceArrayOrDefault(key, arrayOf())
+    getCharSequenceArrayOrDefault(key)
 
-inline fun <reified T : Parcelable> Intent?.getParcelableArrayExpand(key: String): Array<in T> =
-    getParcelableArrayOrDefault(key, arrayOf())
+fun <T : Parcelable> Intent?.getParcelableExpand(key: String): T =
+    getParcelableOrDefault(key)
+
+fun <T : Parcelable> Intent?.getParcelableArrayExpand(key: String): Array<T> =
+    getParcelableArrayOrDefault(key)
 
 fun <T : Parcelable> Intent?.getParcelableArrayListExpand(key: String): ArrayList<T> =
-    getParcelableArrayListOrDefault(key, ArrayList())
+    getParcelableArrayListOrDefault(key)
 
-fun Intent?.getBooleanOrDefault(key: String, defaultValue: Boolean): Boolean =
+fun Intent?.getSerializableExpand(key: String): Serializable =
+    getSerializableOrDefault(key)
+
+fun Intent?.getBundleExpand(key: String): Bundle =
+    getBundleOrDefault(key)
+
+fun Intent?.getBooleanOrDefault(key: String, defaultValue: Boolean = false): Boolean =
     getBooleanOrDefault(key) { defaultValue }
 
-fun Intent?.getByteOrDefault(key: String, defaultValue: Byte): Byte =
+fun Intent?.getByteOrDefault(key: String, defaultValue: Byte = 0.toByte()): Byte =
     getByteOrDefault(key) { defaultValue }
 
-fun Intent?.getShortOrDefault(key: String, defaultValue: Short): Short =
+fun Intent?.getShortOrDefault(key: String, defaultValue: Short = 0.toShort()): Short =
     getShortOrDefault(key) { defaultValue }
 
-fun Intent?.getCharOrDefault(key: String, defaultValue: Char): Char =
+fun Intent?.getCharOrDefault(key: String, defaultValue: Char = 0.toChar()): Char =
     getCharOrDefault(key) { defaultValue }
 
-fun Intent?.getIntOrDefault(key: String, defaultValue: Int): Int =
+fun Intent?.getIntOrDefault(key: String, defaultValue: Int = 0): Int =
     getIntOrDefault(key) { defaultValue }
 
-fun Intent?.getLongOrDefault(key: String, defaultValue: Long): Long =
+fun Intent?.getLongOrDefault(key: String, defaultValue: Long = 0.toLong()): Long =
     getLongOrDefault(key) { defaultValue }
 
-fun Intent?.getFloatOrDefault(key: String, defaultValue: Float): Float =
+fun Intent?.getFloatOrDefault(key: String, defaultValue: Float = 0.toFloat()): Float =
     getFloatOrDefault(key) { defaultValue }
 
-fun Intent?.getDoubleOrDefault(key: String, defaultValue: Double): Double =
+fun Intent?.getDoubleOrDefault(key: String, defaultValue: Double = 0.toDouble()): Double =
     getDoubleOrDefault(key) { defaultValue }
 
-fun Intent?.getStringOrDefault(key: String, defaultValue: String): String =
+fun Intent?.getStringOrDefault(key: String, defaultValue: String = ""): String =
     getStringOrDefault(key) { defaultValue }
 
-fun Intent?.getCharSequenceOrDefault(key: String, defaultValue: CharSequence): CharSequence =
+fun Intent?.getCharSequenceOrDefault(key: String, defaultValue: CharSequence = ""): CharSequence =
     getCharSequenceOrDefault(key) { defaultValue }
 
-fun <T : Parcelable> Intent?.getParcelableOrDefault(key: String, defaultValue: Parcelable): T =
-    getParcelableOrDefault(key) {
-        @Suppress("UNCHECKED_CAST")
-        defaultValue as T
-    }
+fun <T : Parcelable> Intent?.getParcelableOrDefault(
+    key: String,
+    defaultValue: Parcelable = this?.getParcelableExtra<T>(key)!!
+): T = getParcelableOrDefault(key) { defaultValue as T }
 
 fun <T : Parcelable> Intent?.getParcelableArrayOrDefault(
     key: String,
-    defaultValue: Array<in T>
-): Array<in T> = getParcelableArrayOrDefault(key) { defaultValue }
+    defaultValue: Array<Parcelable> = emptyArray()
+): Array<T> = getParcelableArrayOrDefault(key) { defaultValue as Array<T> }
 
 fun <T : Parcelable> Intent?.getParcelableArrayListOrDefault(
     key: String,
-    defaultValue: ArrayList<T>
+    defaultValue: ArrayList<T> = arrayListOf()
 ): ArrayList<T> = getParcelableArrayListOrDefault(key) { defaultValue }
 
-fun Intent?.getSerializableOrDefault(key: String, defaultValue: Serializable): Serializable =
-    getSerializableOrDefault(key) { defaultValue }
+fun Intent?.getSerializableOrDefault(
+    key: String,
+    defaultValue: Serializable = this?.getSerializableExtra(key)!!
+): Serializable = getSerializableOrDefault(key) { defaultValue }
 
-fun Intent?.getIntArrayListOrDefault(key: String, defaultValue: ArrayList<Int>): ArrayList<Int> =
-    getIntArrayListOrDefault(key) { defaultValue }
+fun Intent?.getIntArrayListOrDefault(
+    key: String,
+    defaultValue: ArrayList<Int> = arrayListOf()
+): ArrayList<Int> = getIntArrayListOrDefault(key) { defaultValue }
 
 fun Intent?.getStringArrayListOrDefault(
     key: String,
-    defaultValue: ArrayList<String>
+    defaultValue: ArrayList<String> = arrayListOf()
 ): ArrayList<String> = getStringArrayListOrDefault(key) { defaultValue }
 
 fun Intent?.getCharSequenceArrayListOrDefault(
     key: String,
-    defaultValue: ArrayList<CharSequence>
+    defaultValue: ArrayList<CharSequence> = arrayListOf()
 ): ArrayList<CharSequence> = getCharSequenceArrayListOrDefault(key) { defaultValue }
 
-fun Intent?.getBooleanArrayOrDefault(key: String, defaultValue: BooleanArray): BooleanArray =
-    getBooleanArrayOrDefault(key) { defaultValue }
+fun Intent?.getBooleanArrayOrDefault(
+    key: String,
+    defaultValue: BooleanArray = booleanArrayOf()
+): BooleanArray = getBooleanArrayOrDefault(key) { defaultValue }
 
-fun Intent?.getByteArrayOrDefault(key: String, defaultValue: ByteArray): ByteArray =
-    getByteArrayOrDefault(key) { defaultValue }
+fun Intent?.getByteArrayOrDefault(
+    key: String,
+    defaultValue: ByteArray = byteArrayOf()
+): ByteArray = getByteArrayOrDefault(key) { defaultValue }
 
-fun Intent?.getShortArrayOrDefault(key: String, defaultValue: ShortArray): ShortArray =
-    getShortArrayOrDefault(key) { defaultValue }
+fun Intent?.getShortArrayOrDefault(
+    key: String,
+    defaultValue: ShortArray = shortArrayOf()
+): ShortArray = getShortArrayOrDefault(key) { defaultValue }
 
-fun Intent?.getCharArrayOrDefault(key: String, defaultValue: CharArray): CharArray =
-    getCharArrayOrDefault(key) { defaultValue }
+fun Intent?.getCharArrayOrDefault(
+    key: String,
+    defaultValue: CharArray = charArrayOf()
+): CharArray = getCharArrayOrDefault(key) { defaultValue }
 
-fun Intent?.getIntArrayOrDefault(key: String, defaultValue: IntArray): IntArray =
-    getIntArrayOrDefault(key) { defaultValue }
+fun Intent?.getIntArrayOrDefault(
+    key: String,
+    defaultValue: IntArray = intArrayOf()
+): IntArray = getIntArrayOrDefault(key) { defaultValue }
 
-fun Intent?.getLongArrayOrDefault(key: String, defaultValue: LongArray): LongArray =
-    getLongArrayOrDefault(key) { defaultValue }
+fun Intent?.getLongArrayOrDefault(
+    key: String,
+    defaultValue: LongArray = longArrayOf()
+): LongArray = getLongArrayOrDefault(key) { defaultValue }
 
-fun Intent?.getFloatArrayOrDefault(key: String, defaultValue: FloatArray): FloatArray =
-    getFloatArrayOrDefault(key) { defaultValue }
+fun Intent?.getFloatArrayOrDefault(
+    key: String,
+    defaultValue: FloatArray = floatArrayOf()
+): FloatArray = getFloatArrayOrDefault(key) { defaultValue }
 
-fun Intent?.getDoubleArrayOrDefault(key: String, defaultValue: DoubleArray): DoubleArray =
-    getDoubleArrayOrDefault(key) { defaultValue }
+fun Intent?.getDoubleArrayOrDefault(
+    key: String,
+    defaultValue: DoubleArray = doubleArrayOf()
+): DoubleArray = getDoubleArrayOrDefault(key) { defaultValue }
 
-fun Intent?.getStringArrayOrDefault(key: String, defaultValue: Array<String>): Array<String> =
-    getStringArrayOrDefault(key) { defaultValue }
+fun Intent?.getStringArrayOrDefault(
+    key: String,
+    defaultValue: Array<String> = emptyArray()
+): Array<String> = getStringArrayOrDefault(key) { defaultValue }
 
 fun Intent?.getCharSequenceArrayOrDefault(
     key: String,
-    defaultValue: Array<CharSequence>
+    defaultValue: Array<CharSequence> = emptyArray()
 ): Array<CharSequence> = getCharSequenceArrayOrDefault(key) { defaultValue }
 
-fun Intent?.getBundleOrDefault(key: String, defaultValue: Bundle): Bundle =
+fun Intent?.getBundleOrDefault(key: String, defaultValue: Bundle = Bundle.EMPTY): Bundle =
     getBundleOrDefault(key) { defaultValue }
 
 //ifNone
@@ -217,8 +248,8 @@ fun <T : Parcelable> Intent?.getParcelableOrDefault(key: String, ifNone: () -> T
 
 fun <T : Parcelable> Intent?.getParcelableArrayOrDefault(
     key: String,
-    ifNone: () -> Array<in T>
-): Array<in T> = this?.getParcelableArrayExtra(key) ?: ifNone.invoke()
+    ifNone: () -> Array<T>
+): Array<T> = this?.getParcelableArrayExtra(key) as? Array<T> ?: ifNone.invoke()
 
 fun <T : Parcelable> Intent?.getParcelableArrayListOrDefault(
     key: String,
