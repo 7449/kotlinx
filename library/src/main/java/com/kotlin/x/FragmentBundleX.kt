@@ -114,7 +114,7 @@ fun <T : Parcelable> Fragment?.getSparseParcelableArrayExpand(key: String): Spar
     bundleExpand.getSparseParcelableArrayExpand(key)
 
 fun Fragment?.getBundleExpand(key: String): Bundle =
-    bundleExpand.getBundle(key)
+    bundleExpand.getBundleExpand(key)
 
 fun Fragment?.getOrDefault(key: String, defaultValue: Any = Any()): Any =
     bundleExpand.getOrDefault(key, defaultValue)

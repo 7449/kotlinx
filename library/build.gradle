@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: "guru.stefma.bintrayrelease"
-
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -28,4 +27,19 @@ publish {
 dependencies {
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     compileOnly "androidx.appcompat:appcompat:$appcompatVersion"
+}
+apply plugin: 'maven'
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            repository(url: "file:///$rootDir/../maven")
+            pom.project {
+                version "0.0.1"
+                groupId "androidx.kotlin"
+                artifactId "ext"
+                packaging "aar"
+            }
+        }
+    }
 }

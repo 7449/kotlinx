@@ -18,6 +18,75 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().add(android.R.id.content, testFragment).commit()
 
         Log.i(
+            "BundleExtras",
+            bundleOrEmptyExpand().toString() + "\n" +
+                    bundleStringOrDefault("") {
+                        "bundle value == null or return defaultValue"
+                    } + "\n" +
+                    bundleBooleanExpand("").toString() + "\n" +
+                    bundleByteExpand("").toString() + "\n" +
+                    bundleCharExpand("").toString() + "\n" +
+                    bundleShortExpand("").toString() + "\n" +
+                    bundleIntExpand("").toString() + "\n" +
+                    bundleLongExpand("").toString() + "\n" +
+                    bundleFloatExpand("").toString() + "\n" +
+                    bundleDoubleExpand("").toString() + "\n" +
+                    bundleStringExpand("") + "\n" +
+                    bundleCharSequenceExpand("").toString() + "\n" +
+                    bundleIntArrayListExpand("").toString() + "\n" +
+                    bundleStringArrayListExpand("").toString() + "\n" +
+                    bundleCharSequenceArrayListExpand("").toString() + "\n" +
+                    bundleBooleanArrayExpand("").toString() + "\n" +
+                    bundleByteArrayExpand("").toString() + "\n" +
+                    bundleShortArrayExpand("").toString() + "\n" +
+                    bundleCharArrayExpand("").toString() + "\n" +
+                    bundleIntArrayExpand("").toString() + "\n" +
+                    bundleLongArrayExpand("").toString() + "\n" +
+                    bundleFloatArrayExpand("").toString() + "\n" +
+                    bundleDoubleArrayExpand("").toString() + "\n" +
+                    bundleStringArrayExpand("").toString() + "\n" +
+                    bundleCharSequenceArrayExpand("").toString() + "\n" +
+                    bundleParcelableOrDefault<Intent>("", Intent()).toString() + "\n" +
+                    bundleParcelableArrayExpand<Intent>("").toString() + "\n" +
+                    bundleParcelableArrayListExpand<Intent>("").toString() + "\n" +
+                    bundleSerializableOrDefault("", Test()).toString() + "\n" +
+                    bundleBundleExpand("").toString()
+        )
+
+        Log.i(
+            "IntentExtras",
+            intentOrEmptyExpand().toString() + "\n" +
+                    intentBooleanExpand("").toString() + "\n" +
+                    intentByteExpand("").toString() + "\n" +
+                    intentCharExpand("").toString() + "\n" +
+                    intentShortExpand("").toString() + "\n" +
+                    intentIntExpand("").toString() + "\n" +
+                    intentLongExpand("").toString() + "\n" +
+                    intentFloatExpand("").toString() + "\n" +
+                    intentDoubleExpand("").toString() + "\n" +
+                    intentStringExpand("") + "\n" +
+                    intentCharSequenceExpand("").toString() + "\n" +
+                    intentIntArrayListExpand("").toString() + "\n" +
+                    intentStringArrayListExpand("").toString() + "\n" +
+                    intentCharSequenceArrayListExpand("").toString() + "\n" +
+                    intentBooleanArrayExpand("").toString() + "\n" +
+                    intentByteArrayExpand("").toString() + "\n" +
+                    intentShortArrayExpand("").toString() + "\n" +
+                    intentCharArrayExpand("").toString() + "\n" +
+                    intentIntArrayExpand("").toString() + "\n" +
+                    intentLongArrayExpand("").toString() + "\n" +
+                    intentFloatArrayExpand("").toString() + "\n" +
+                    intentDoubleArrayExpand("").toString() + "\n" +
+                    intentStringArrayExpand("").toString() + "\n" +
+                    intentCharSequenceArrayExpand("").toString() + "\n" +
+                    intentParcelableOrDefault<Intent>("", Intent()).toString() + "\n" +
+                    intentParcelableArrayExpand<Intent>("").toString() + "\n" +
+                    intentParcelableArrayListExpand<Intent>("").toString() + "\n" +
+                    intentSerializableOrDefault("", Test()).toString() + "\n" +
+                    intentBundleExpand("").toString()
+        )
+
+        Log.i(
             "MainActivityIntent",
             intent.orEmptyExpand().toString() + "\n" +
                     intent.getBooleanExpand("").toString() + "\n" +

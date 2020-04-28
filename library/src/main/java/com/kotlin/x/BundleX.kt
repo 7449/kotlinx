@@ -119,7 +119,7 @@ fun <T : Parcelable> Bundle?.getParcelableArrayListExpand(key: String): ArrayLis
 fun <T : Parcelable> Bundle?.getSparseParcelableArrayExpand(key: String): SparseArray<T> =
     getSparseParcelableArrayOrDefault(key)
 
-fun Bundle?.getBundle(key: String): Bundle =
+fun Bundle?.getBundleExpand(key: String): Bundle =
     getBundleOrDefault(key)
 
 fun Bundle?.getOrDefault(key: String, defaultValue: Any = Any()): Any =
