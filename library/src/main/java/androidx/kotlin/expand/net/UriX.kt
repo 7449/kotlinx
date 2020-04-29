@@ -1,6 +1,6 @@
 @file:JvmName("UriUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.net
 
 import android.net.Uri
 

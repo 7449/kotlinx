@@ -1,6 +1,6 @@
 @file:JvmName("ActivityUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.app
 
 import android.app.Activity
 import android.graphics.Bitmap
@@ -11,6 +11,10 @@ import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.kotlin.expand.os.camera.CameraStatus
+import androidx.kotlin.expand.os.camera.openCameraExpand
+import androidx.kotlin.expand.os.permission.permissionCameraExpand
+import androidx.kotlin.expand.os.permission.permissionStorageExpand
 
 @Suppress("DEPRECATION")
 val Activity.captureContent: Bitmap

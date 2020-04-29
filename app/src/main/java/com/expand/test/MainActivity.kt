@@ -7,7 +7,7 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.kotlin.expand.*
+import androidx.kotlin.expand.os.*
 
 class MainActivity : AppCompatActivity() {
 

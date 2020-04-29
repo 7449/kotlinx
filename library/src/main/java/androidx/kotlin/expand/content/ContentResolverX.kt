@@ -1,6 +1,6 @@
 @file:JvmName("ContentResolverUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.content
 
 import android.content.ContentResolver
 import android.database.Cursor

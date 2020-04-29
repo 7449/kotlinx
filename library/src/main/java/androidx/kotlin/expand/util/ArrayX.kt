@@ -1,7 +1,7 @@
 @file:JvmName("ArrayUtils")
 @file:Suppress("NOTHING_TO_INLINE")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.util
 
 import android.os.Build
 import android.util.SparseArray
@@ -9,6 +9,7 @@ import android.util.SparseBooleanArray
 import android.util.SparseIntArray
 import android.util.SparseLongArray
 import androidx.annotation.RequiresApi
+import androidx.kotlin.expand.annotation.Casually
 
 @Casually
 interface OnSparseArrayListener<T> {

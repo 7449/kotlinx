@@ -2,12 +2,13 @@
 
 // @see androidx.core:core-ktx:version   androidx.core.widget.TextView
 // TextView expand
-package androidx.kotlin.expand
+package androidx.kotlin.expand.widget
 
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
 import androidx.annotation.ColorRes
+import androidx.kotlin.expand.content.colorExpand
 
 @JvmName("setTextColor")
 fun TextView.colorExpend(@ColorRes id: Int): TextView = apply {

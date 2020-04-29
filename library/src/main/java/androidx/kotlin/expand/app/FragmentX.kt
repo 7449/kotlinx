@@ -1,6 +1,6 @@
 @file:JvmName("FragmentUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.app
 
 import android.content.ContentValues
 import android.content.Intent
@@ -12,6 +12,12 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.*
 import androidx.fragment.app.Fragment
+import androidx.kotlin.expand.content.*
+import androidx.kotlin.expand.graphics.drawable.minimumWidthAndHeightDrawableExpand
+import androidx.kotlin.expand.os.camera.CameraStatus
+import androidx.kotlin.expand.os.camera.openCameraExpand
+import androidx.kotlin.expand.os.permission.permissionCameraExpand
+import androidx.kotlin.expand.os.permission.permissionStorageExpand
 import java.io.File
 import java.util.concurrent.Executor
 

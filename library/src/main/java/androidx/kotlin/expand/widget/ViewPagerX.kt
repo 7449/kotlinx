@@ -1,6 +1,6 @@
 @file:JvmName("ViewPagerUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.widget
 
 import androidx.viewpager.widget.ViewPager
 

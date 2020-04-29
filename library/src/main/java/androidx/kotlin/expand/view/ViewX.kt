@@ -1,6 +1,6 @@
 @file:JvmName("ViewUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.view
 
 import android.view.View
 

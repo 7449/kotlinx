@@ -1,6 +1,6 @@
 @file:JvmName("ColorUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.graphics
 
 import android.content.Context
 import androidx.core.content.ContextCompat

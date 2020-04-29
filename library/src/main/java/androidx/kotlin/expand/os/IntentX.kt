@@ -1,7 +1,7 @@
 @file:JvmName("IntentUtils")
 @file:Suppress("UNCHECKED_CAST")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.os
 
 import android.content.Intent
 import android.os.Bundle

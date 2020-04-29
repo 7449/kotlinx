@@ -1,6 +1,6 @@
 @file:JvmName("DrawableUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.graphics.drawable
 
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter

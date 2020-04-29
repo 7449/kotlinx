@@ -1,10 +1,11 @@
-@file:JvmName("KeyboardUtils")
+@file:JvmName("EditTextUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.widget
 
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import androidx.kotlin.expand.version.hasLExpand
 import java.lang.reflect.Method
 
 @JvmName("offKeyboard")

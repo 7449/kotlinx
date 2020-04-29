@@ -1,7 +1,7 @@
-@file:JvmName("FragmentBundleUtils")
+@file:JvmName("FragmentExtraUtils")
 @file:Suppress("HasPlatformType")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.os
 
 import android.os.Build
 import android.os.Bundle
@@ -11,6 +11,7 @@ import android.util.SizeF
 import android.util.SparseArray
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.kotlin.expand.util.sparseArrayOf
 import java.io.Serializable
 
 val Fragment?.bundleExpand: Bundle?

@@ -1,7 +1,7 @@
 @file:JvmName("BundleUtils")
 @file:Suppress("HasPlatformType", "UNCHECKED_CAST")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.os
 
 import android.os.Build
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.util.Size
 import android.util.SizeF
 import android.util.SparseArray
 import androidx.annotation.RequiresApi
+import androidx.kotlin.expand.util.sparseArrayOf
 import java.io.Serializable
 
 /**

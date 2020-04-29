@@ -1,4 +1,4 @@
-package androidx.kotlin.expand
+package androidx.kotlin.expand.annotation
 
 @Target(
     AnnotationTarget.CLASS,

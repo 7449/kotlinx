@@ -1,6 +1,6 @@
 @file:JvmName("CameraUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.os.camera
 
 import android.app.Activity
 import android.content.Intent

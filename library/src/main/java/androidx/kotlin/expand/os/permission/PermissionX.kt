@@ -1,6 +1,6 @@
 @file:JvmName("PermissionUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.os.permission
 
 import android.Manifest
 import android.app.Activity

@@ -2,10 +2,11 @@
 
 // @see androidx.core:core-ktx:version   androidx.core.database.Cursor
 // Cursor expand
-package androidx.kotlin.expand
+package androidx.kotlin.expand.database
 
 import android.database.Cursor
 import android.os.Bundle
+import androidx.kotlin.expand.os.orEmptyExpand
 
 val Cursor?.extrasExpand: Bundle
     get() = this?.extras.orEmptyExpand()

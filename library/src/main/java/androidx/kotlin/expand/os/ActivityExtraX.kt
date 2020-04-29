@@ -13,7 +13,7 @@
  *
  */
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.os
 
 import android.app.Activity
 import android.content.Intent
@@ -24,6 +24,7 @@ import android.util.Size
 import android.util.SizeF
 import android.util.SparseArray
 import androidx.annotation.RequiresApi
+import androidx.kotlin.expand.util.sparseArrayOf
 import java.io.Serializable
 
 val Activity?.intentExpand: Intent?

@@ -1,6 +1,6 @@
 @file:JvmName("BitmapUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.graphics
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

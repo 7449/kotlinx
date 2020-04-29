@@ -4,8 +4,8 @@ import android.content.Context;
 import android.text.Editable;
 import android.widget.EditText;
 
-import androidx.kotlin.expand.TextViewUtils;
-import androidx.kotlin.expand.ViewPagerUtils;
+import androidx.kotlin.expand.widget.TextViewUtils;
+import androidx.kotlin.expand.widget.ViewPagerUtils;
 import androidx.viewpager.widget.ViewPager;
 
 import kotlin.Unit;

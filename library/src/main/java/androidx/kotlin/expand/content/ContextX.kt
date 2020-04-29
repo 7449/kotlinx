@@ -1,6 +1,6 @@
 @file:JvmName("ContextUtils")
 
-package androidx.kotlin.expand
+package androidx.kotlin.expand.content
 
 import android.content.ContentValues
 import android.content.Context
@@ -17,6 +17,8 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.annotation.*
 import androidx.core.content.ContextCompat
+import androidx.kotlin.expand.graphics.drawable.minimumWidthAndHeightDrawableExpand
+import androidx.kotlin.expand.version.hasQExpand
 import java.io.BufferedReader
 import java.io.File
 import java.io.InputStreamReader
