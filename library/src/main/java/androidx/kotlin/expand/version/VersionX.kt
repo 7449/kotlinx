@@ -3,35 +3,85 @@
 package androidx.kotlin.expand.version
 
 import android.os.Build
+import androidx.kotlin.expand.annotation.Version
+import androidx.kotlin.expand.annotation.VersionLog
 
 @JvmName("isMinVersion")
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 fun Int.minVersionExpand(): Boolean =
     Build.VERSION.SDK_INT >= this
 
 @JvmName("isMaxVersion")
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 fun Int.maxVersionExpand(): Boolean =
     Build.VERSION.SDK_INT <= this
 
 @JvmName("getCurrentVersion")
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 fun Int.currentVersionExpand(): Boolean =
     Build.VERSION.SDK_INT == this
 
 @JvmName("isLollipop")
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 fun hasLExpand(): Boolean =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
 
 @JvmName("isM")
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 fun hasMExpand(): Boolean =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
 
 @JvmName("isN")
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 fun hasNExpand(): Boolean =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 
 @JvmName("isQ")
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 fun hasQExpand(): Boolean =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 class CheckVersion(private val version: String) : Comparable<CheckVersion> {
 
     init {
@@ -55,6 +105,10 @@ class CheckVersion(private val version: String) : Comparable<CheckVersion> {
         return this === other || other != null
                 && this.javaClass == other.javaClass
                 && this.compareTo(other as CheckVersion) == 0
+    }
+
+    override fun hashCode(): Int {
+        return version.hashCode()
     }
 
 }

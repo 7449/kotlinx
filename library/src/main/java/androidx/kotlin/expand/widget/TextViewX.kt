@@ -8,25 +8,57 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
 import androidx.annotation.ColorRes
+import androidx.kotlin.expand.annotation.Version
+import androidx.kotlin.expand.annotation.VersionLog
 import androidx.kotlin.expand.content.colorExpand
 
 @JvmName("setTextColor")
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 fun TextView.colorExpend(@ColorRes id: Int): TextView = apply {
     setTextColor(context.colorExpand(id))
 }
 
 @JvmName("addOnAfterTextChanged")
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 fun TextView.doOnAfterTextChangedExpend(action: (editable: Editable) -> Unit): TextView =
     addTextChangedListenerExpand(afterTextChanged = action)
 
 @JvmName("addOnBeforeTextChanged")
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 fun TextView.doOnBeforeTextChangedExpend(action: (charSequence: CharSequence, start: Int, count: Int, after: Int) -> Unit): TextView =
     addTextChangedListenerExpand(beforeTextChanged = action)
 
 @JvmName("addOnTextChanged")
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 fun TextView.doOnTextChangedExpend(action: (charSequence: CharSequence, start: Int, before: Int, count: Int) -> Unit): TextView =
     addTextChangedListenerExpand(onTextChanged = action)
 
+@Version(
+    version = [Version.BANANA],
+    log = [
+        VersionLog(Version.BANANA, "init submit")
+    ]
+)
 fun TextView.addTextChangedListenerExpand(
     afterTextChanged: (editable: Editable) -> Unit = { _: Editable -> },
     beforeTextChanged: (charSequence: CharSequence, start: Int, count: Int, after: Int) -> Unit = { _: CharSequence, _: Int, _: Int, _: Int -> },

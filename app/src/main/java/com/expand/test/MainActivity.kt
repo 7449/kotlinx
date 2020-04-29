@@ -4,10 +4,13 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.kotlin.expand.os.*
+import androidx.kotlin.expand.view.postDelayedExpand
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val testFragment = TestFragment()
-
+        val view = findViewById<View>(R.id.imageView)
+        view.postDelayedExpand(3000) {
+        }
+        LinearLayout(this)
         supportFragmentManager.beginTransaction().add(android.R.id.content, testFragment).commit()
         TestJava.test(this)
         Log.i(
