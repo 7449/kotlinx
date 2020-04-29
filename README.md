@@ -1,3 +1,3 @@
 # kotlinx
 
-    implementation 'com.ydevelop:kotlinx:0.0.0.9'
+    implementation 'com.ydevelop:kotlinx:0.0.1'

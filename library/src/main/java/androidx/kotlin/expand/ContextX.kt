@@ -5,6 +5,7 @@ package androidx.kotlin.expand
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.graphics.Typeface
@@ -44,6 +45,24 @@ val Context.mainExecutorCompat: Executor
 
 val Context.isLandscapeExpand: Boolean
     get() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+val Context.userIconExpand: Drawable
+    get() = getAppIconExpand(packageName)
+
+val Context.isCameraExpand: Boolean
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    get() = packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
+
+val Context.getStatusBarHeightExpand: Int
+    get() {
+        val resourceId: Int = resources.getIdentifier("status_bar_height", "dimen", "android")
+        val height: Int = resources.getDimensionPixelSize(resourceId)
+        return if (height > 0) height else 0
+    }
+
+@JvmName("getAppIcon")
+fun Context.getAppIconExpand(packageName: String): Drawable =
+    packageManager.getApplicationInfo(packageName, 0).loadIcon(packageManager)
 
 @JvmName("toast")
 fun Context.toastExpand(any: Any): Unit =

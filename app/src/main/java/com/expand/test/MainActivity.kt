@@ -15,9 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val testFragment = TestFragment()
+
         supportFragmentManager.beginTransaction().add(android.R.id.content, testFragment).commit()
         TestJava.test(this)
-
         Log.i(
             "BundleExtras",
             bundleOrEmptyExpand().toString() + "\n" +

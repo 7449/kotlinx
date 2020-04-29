@@ -3,11 +3,31 @@
 package androidx.kotlin.expand
 
 import android.app.Activity
+import android.graphics.Bitmap
+import android.graphics.Rect
 import android.net.Uri
 import android.util.DisplayMetrics
+import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+
+@Suppress("DEPRECATION")
+val Activity.captureContent: Bitmap
+    get() {
+        val view: View = window.decorView
+        view.isDrawingCacheEnabled = true
+        view.buildDrawingCache()
+        val b1: Bitmap = view.drawingCache
+        val frame = Rect()
+        window.decorView.getWindowVisibleDisplayFrame(frame)
+        val statusBarHeight: Int = frame.top
+        val width = windowManager.defaultDisplay.width
+        val height = windowManager.defaultDisplay.height
+        val b = Bitmap.createBitmap(b1, 0, statusBarHeight, width, height - statusBarHeight)
+        view.destroyDrawingCache()
+        return b
+    }
 
 @JvmName("hideStatusBar")
 fun Activity.hideStatusBarExpand() {

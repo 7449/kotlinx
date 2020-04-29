@@ -10,10 +10,10 @@ android {
         versionName "1.0"
     }
     compileOptions {
-        kotlinOptions.freeCompilerArgs += ['-module-name', "com.ydevelop.kotlinx"]
+        kotlinOptions.freeCompilerArgs += ['-module-name', "androidx.kotlin.expand"]
     }
 }
-version = "0.0.0.9"
+version = "0.0.1"
 group = "com.ydevelop"
 androidArtifact {
     artifactId = "kotlinx"
@@ -22,7 +22,7 @@ androidArtifact {
 publish {
     userOrg = 'ydevelop'
     desc = 'this is android kotlinx'
-    website = 'https://github.com/android-develop-team/kotlinx'
+    website = 'https://github.com/7449/kotlinx'
 }
 dependencies {
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
