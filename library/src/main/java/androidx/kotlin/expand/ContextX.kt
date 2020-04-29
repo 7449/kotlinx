@@ -172,7 +172,7 @@ fun Context.appIntentExpand(packageName: String): Intent? =
     packageManager.getLaunchIntentForPackage(packageName)
 
 @JvmName("getMinimumDrawable")
-fun Context.minimumDrawable(@DrawableRes id: Int, @ColorInt color: Int): Drawable? =
+fun Context.minimumDrawableExpand(@DrawableRes id: Int, @ColorInt color: Int): Drawable? =
     drawableExpand(id)?.minimumWidthAndHeightDrawableExpand(color)
 
 @JvmName("moveToNextToId")
