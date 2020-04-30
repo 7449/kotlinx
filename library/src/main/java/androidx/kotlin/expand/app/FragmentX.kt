@@ -23,22 +23,29 @@ import androidx.kotlin.expand.os.permission.permissionStorageExpand
 import java.io.File
 import java.util.concurrent.Executor
 
+@Deprecated("@see Fragment.registerForActivityResult", ReplaceWith(""))
 @JvmName("startActivity")
 @Version(
-    version = [Version.BANANA],
+    version = [Version.BANANA, Version.PINEAPPLE],
     log = [
-        VersionLog(Version.BANANA, "init submit")
+        VersionLog(Version.BANANA, "init submit"),
+        VersionLog(Version.PINEAPPLE, "deprecated")
     ]
 )
 fun Fragment.startActivityExpand(clz: Class<*>, code: Int, bundle: Bundle) {
     startActivityForResult(Intent(requireActivity(), clz).putExtras(bundle), code)
 }
 
+@Deprecated(
+    "@see ActivityResultContracts.TakePicture or Custom ActivityResultContract",
+    ReplaceWith("")
+)
 @JvmName("openCamera")
 @Version(
-    version = [Version.BANANA],
+    version = [Version.BANANA, Version.PINEAPPLE],
     log = [
-        VersionLog(Version.BANANA, "init submit")
+        VersionLog(Version.BANANA, "init submit"),
+        VersionLog(Version.PINEAPPLE, "deprecated")
     ]
 )
 fun Fragment.openCameraExpand(fileUri: Uri, video: Boolean): CameraStatus =

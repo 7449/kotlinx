@@ -81,11 +81,16 @@ fun Activity.squareExpand(count: Int): Int {
     return dm.widthPixels / count
 }
 
+@Deprecated(
+    "@see ActivityResultContracts.TakePicture or Custom ActivityResultContract",
+    ReplaceWith("")
+)
 @JvmName("openCamera")
 @Version(
-    version = [Version.BANANA],
+    version = [Version.BANANA, Version.PINEAPPLE],
     log = [
-        VersionLog(Version.BANANA, "init submit")
+        VersionLog(Version.BANANA, "init submit"),
+        VersionLog(Version.PINEAPPLE, "deprecated")
     ]
 )
 fun Activity.openCameraExpand(fileUri: Uri, video: Boolean): CameraStatus =

@@ -23,11 +23,13 @@ enum class CameraStatus {
     ERROR,
 }
 
+@Deprecated("@see ActivityResultContracts.TakePicture or Custom ActivityResultContract")
 @JvmName("openCamera")
 @Version(
-    version = [Version.BANANA],
+    version = [Version.BANANA, Version.PINEAPPLE],
     log = [
-        VersionLog(Version.BANANA, "init submit")
+        VersionLog(Version.BANANA, "init submit"),
+        VersionLog(Version.PINEAPPLE, "deprecated")
     ]
 )
 fun openCameraExpand(root: Any, fileUri: Uri, video: Boolean): CameraStatus {
