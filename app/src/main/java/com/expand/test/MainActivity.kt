@@ -10,6 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.kotlin.expand.os.*
+import androidx.kotlin.expand.os.permission.permissionStorageExpand
 import androidx.kotlin.expand.view.postDelayedExpand
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        permissionStorageExpand()
         val testFragment = TestFragment()
         val view = findViewById<View>(R.id.imageView)
         view.postDelayedExpand(3000) {
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         LinearLayout(this)
         supportFragmentManager.beginTransaction().add(android.R.id.content, testFragment).commit()
         TestJava.test(this)
+        TestApp.testCursor(this)
         Log.i(
             "BundleExtras",
             bundleOrEmptyExpand().toString() + "\n" +
