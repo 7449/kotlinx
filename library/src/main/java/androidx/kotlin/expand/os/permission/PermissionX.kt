@@ -4,6 +4,7 @@ package androidx.kotlin.expand.os.permission
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -16,12 +17,64 @@ enum class PermissionCode(val code: Int) {
     READ(361),
 }
 
-//判断权限,如果有返回true,没有返回false并直接请求
+@JvmName("checkSelf")
+@Version(
+    version = [Version.PINEAPPLE],
+    log = [
+        VersionLog(Version.PINEAPPLE, "init submit")
+    ]
+)
+fun Context.checkSelfPermissionExpand(name: String) =
+    ContextCompat.checkSelfPermission(this, name) == PackageManager.PERMISSION_GRANTED
+
+@JvmName("checkCamera")
+@Version(
+    version = [Version.PINEAPPLE],
+    log = [
+        VersionLog(Version.PINEAPPLE, "init submit")
+    ]
+)
+fun Context.checkCameraPermissionExpand() =
+    checkSelfPermissionExpand(Manifest.permission.CAMERA)
+
+@JvmName("checkWrite")
+@Version(
+    version = [Version.PINEAPPLE],
+    log = [
+        VersionLog(Version.PINEAPPLE, "init submit")
+    ]
+)
+fun Context.checkWritePermissionExpand() =
+    checkSelfPermissionExpand(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+@JvmName("checkCamera")
+@Version(
+    version = [Version.PINEAPPLE],
+    log = [
+        VersionLog(Version.PINEAPPLE, "init submit")
+    ]
+)
+fun Fragment.checkCameraPermissionExpand() =
+    requireContext().checkSelfPermissionExpand(Manifest.permission.CAMERA)
+
+@JvmName("checkWrite")
+@Version(
+    version = [Version.PINEAPPLE],
+    log = [
+        VersionLog(Version.PINEAPPLE, "init submit")
+    ]
+)
+fun Fragment.checkWritePermissionExpand() =
+    requireContext().checkSelfPermissionExpand(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+
+@Deprecated("@see ActivityResultContracts.RequestPermission()", ReplaceWith(""))
 @JvmName("checkPermission")
 @Version(
-    version = [Version.BANANA],
+    version = [Version.BANANA, Version.PINEAPPLE],
     log = [
-        VersionLog(Version.BANANA, "init submit")
+        VersionLog(Version.BANANA, "init submit"),
+        VersionLog(Version.PINEAPPLE, "deprecated")
     ]
 )
 fun Activity.permissionExpand(permissions: String, code: Int): Boolean {
@@ -32,12 +85,13 @@ fun Activity.permissionExpand(permissions: String, code: Int): Boolean {
     return true
 }
 
-//判断权限,如果有返回true,没有返回false并直接请求
+@Deprecated("@see ActivityResultContracts.RequestPermission()", ReplaceWith(""))
 @JvmName("checkPermission")
 @Version(
-    version = [Version.BANANA],
+    version = [Version.BANANA, Version.PINEAPPLE],
     log = [
-        VersionLog(Version.BANANA, "init submit")
+        VersionLog(Version.BANANA, "init submit"),
+        VersionLog(Version.PINEAPPLE, "deprecated")
     ]
 )
 fun Fragment.permissionExpand(permissions: String, code: Int): Boolean {
@@ -51,45 +105,49 @@ fun Fragment.permissionExpand(permissions: String, code: Int): Boolean {
     return true
 }
 
-//Activity判断存储权限
+@Deprecated("@see ActivityResultContracts.RequestPermission()", ReplaceWith(""))
 @JvmName("permissionStorage")
 @Version(
-    version = [Version.BANANA],
+    version = [Version.BANANA, Version.PINEAPPLE],
     log = [
-        VersionLog(Version.BANANA, "init submit")
+        VersionLog(Version.BANANA, "init submit"),
+        VersionLog(Version.PINEAPPLE, "deprecated")
     ]
 )
 fun Activity.permissionStorageExpand(): Boolean =
     permissionExpand(Manifest.permission.WRITE_EXTERNAL_STORAGE, PermissionCode.WRITE.code)
 
-//Activity判断拍照权限
+@Deprecated("@see ActivityResultContracts.RequestPermission()", ReplaceWith(""))
 @JvmName("permissionCamera")
 @Version(
-    version = [Version.BANANA],
+    version = [Version.BANANA, Version.PINEAPPLE],
     log = [
-        VersionLog(Version.BANANA, "init submit")
+        VersionLog(Version.BANANA, "init submit"),
+        VersionLog(Version.PINEAPPLE, "deprecated")
     ]
 )
 fun Activity.permissionCameraExpand(): Boolean =
     permissionExpand(Manifest.permission.CAMERA, PermissionCode.READ.code)
 
-//Fragment判断存储权限
+@Deprecated("@see ActivityResultContracts.RequestPermission()", ReplaceWith(""))
 @JvmName("permissionStorage")
 @Version(
-    version = [Version.BANANA],
+    version = [Version.BANANA, Version.PINEAPPLE],
     log = [
-        VersionLog(Version.BANANA, "init submit")
+        VersionLog(Version.BANANA, "init submit"),
+        VersionLog(Version.PINEAPPLE, "deprecated")
     ]
 )
 fun Fragment.permissionStorageExpand(): Boolean =
     permissionExpand(Manifest.permission.WRITE_EXTERNAL_STORAGE, PermissionCode.WRITE.code)
 
-//Fragment判断拍照权限
+@Deprecated("@see ActivityResultContracts.RequestPermission()", ReplaceWith(""))
 @JvmName("permissionCamera")
 @Version(
-    version = [Version.BANANA],
+    version = [Version.BANANA, Version.PINEAPPLE],
     log = [
-        VersionLog(Version.BANANA, "init submit")
+        VersionLog(Version.BANANA, "init submit"),
+        VersionLog(Version.PINEAPPLE, "deprecated")
     ]
 )
 fun Fragment.permissionCameraExpand(): Boolean =
