@@ -3,8 +3,26 @@
 package androidx.kotlin.expand.view
 
 import android.view.View
+import android.view.ViewTreeObserver
 import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
+
+@JvmName("addOnPreDrawListener")
+@Version(
+    version = [Version.PINEAPPLE],
+    log = [
+        VersionLog(Version.PINEAPPLE, "init submit")
+    ]
+)
+fun View.addOnPreDrawListenerExpand(action: () -> Unit) {
+    viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
+        override fun onPreDraw(): Boolean {
+            viewTreeObserver.removeOnPreDrawListener(this)
+            action.invoke()
+            return true
+        }
+    })
+}
 
 @JvmName("postDelayed")
 @Version(
