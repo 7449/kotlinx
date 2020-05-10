@@ -2,11 +2,14 @@
 
 package androidx.kotlin.expand.util
 
+import androidx.kotlin.expand.annotation.Version
+import androidx.kotlin.expand.annotation.VersionLog
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
 
+@VersionLog(version = Version.PEACHES, versionLog = "added in version 0.0.4")
 enum class TimeUnit {
     MSEC,
     SEC,
@@ -15,6 +18,7 @@ enum class TimeUnit {
     DAY
 }
 
+@VersionLog(version = Version.PEACHES, versionLog = "added in version 0.0.4")
 object TimeMultiple {
     /**
      * 毫秒与毫秒的倍数
@@ -42,58 +46,85 @@ object TimeMultiple {
     const val DAY = 86400000
 }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 const val GMT_8 = "GMT+8:00"
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val DEFAULT_WEEK: Array<String> = arrayOf("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val DEFAULT_WEEK_2: Array<String> = arrayOf("周日", "周一", "周二", "周三", "周四", "周五", "周六")
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 fun threadLocal(pattern: String): SimpleDateFormat = SimpleDateFormat(pattern, Locale.getDefault())
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val DEFAULT_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy-MM-dd HH:mm:ss") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val CN_MM_DD_FORMAT: SimpleDateFormat by lazy { threadLocal("MM月dd日") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val CN_MM_DD_HH_MM_FORMAT: SimpleDateFormat by lazy { threadLocal("MM月dd日 HH:mm") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val CN_YYYY_MM_DD_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy年MM月dd日") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val CN_YYYY_MM_DD_HH_MM_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy年MM月dd日 HH:mm") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val CN_YYYY_M_D_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy年M月d日") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val CN_YYYY_MM_DD_HH_MM_SS_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy年MM月dd日HH时mm分ss秒") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val CN_YYYY_MM_DD_HH_MM_2_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy年MM月dd日HH时mm分") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val CN_YYYY_MM_DD_HH_MM_3_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy年M月d日H时m分") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_YYYY_M_D_HH_MM_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy-M-d HH:mm") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_YYYY_MM_DD_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy-MM-dd") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_YYYY_MM_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy-MM") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_YYYY_MM_DD_HH_MM_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy-MM-dd HH:mm") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_M_D_FORMAT: SimpleDateFormat by lazy { threadLocal("M/d") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_MM_DD_FORMAT: SimpleDateFormat by lazy { threadLocal("MM-dd") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_YYYY_MM_DD_HH_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy-MM-dd HH") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_YYYY_MM_DD_HH_FORMATS: SimpleDateFormat by lazy { threadLocal("yyyy.MM.dd") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_BIAS_YYYY_MM_DD_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy/MM/dd") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_BIAS_YYYY_MM_DD_HH_MM_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy/MM/dd HH:mm") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_H_MM_FORMAT: SimpleDateFormat by lazy { threadLocal("H:mm") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_HH_MM_FORMAT: SimpleDateFormat by lazy { threadLocal("HH:mm") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_YYYY_M_D_FORMAT: SimpleDateFormat by lazy { threadLocal("yyyy-M-d") }
 
+@VersionLog(versionLog = "added in version 0.0.4", version = Version.PEACHES)
 val EN_MM_DD_HH_MM_FORMAT: SimpleDateFormat by lazy { threadLocal("MM-dd HH:mm") }
 
 /**
