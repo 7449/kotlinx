@@ -167,7 +167,7 @@ fun Context.styleableAttributeIdExpand(
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取动画ID")
     ]
 )
-fun Context.animIdOrDefault(name: String, action: () -> Int): Int =
+fun Context.animIdOrDefault(name: String, action: ActionInt): Int =
     findRId(packageName + POINT + R + JOIN + ANIM, name) { action.invoke() }
 
 @JvmName("getAttrId")
@@ -177,7 +177,7 @@ fun Context.animIdOrDefault(name: String, action: () -> Int): Int =
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取属性ID")
     ]
 )
-fun Context.attrIdOrDefault(name: String, action: () -> Int): Int =
+fun Context.attrIdOrDefault(name: String, action: ActionInt): Int =
     findRId(packageName + POINT + R + JOIN + ATTR, name) { action.invoke() }
 
 @JvmName("getColorId")
@@ -187,7 +187,7 @@ fun Context.attrIdOrDefault(name: String, action: () -> Int): Int =
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取颜色ID")
     ]
 )
-fun Context.colorIdOrDefault(name: String, action: () -> Int): Int =
+fun Context.colorIdOrDefault(name: String, action: ActionInt): Int =
     findRId(packageName + POINT + R + JOIN + COLOR, name) { action.invoke() }
 
 @JvmName("getDimenId")
@@ -197,7 +197,7 @@ fun Context.colorIdOrDefault(name: String, action: () -> Int): Int =
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取尺寸ID")
     ]
 )
-fun Context.dimenIdOrDefault(name: String, action: () -> Int): Int =
+fun Context.dimenIdOrDefault(name: String, action: ActionInt): Int =
     findRId(packageName + POINT + R + JOIN + DIMEN, name) { action.invoke() }
 
 @JvmName("getDrawableId")
@@ -207,7 +207,7 @@ fun Context.dimenIdOrDefault(name: String, action: () -> Int): Int =
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取图片ID")
     ]
 )
-fun Context.drawableIdOrDefault(name: String, action: () -> Int): Int =
+fun Context.drawableIdOrDefault(name: String, action: ActionInt): Int =
     findRId(packageName + POINT + R + JOIN + DRAWABLE, name) { action.invoke() }
 
 @JvmName("getId")
@@ -217,7 +217,7 @@ fun Context.drawableIdOrDefault(name: String, action: () -> Int): Int =
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取ID")
     ]
 )
-fun Context.idOrDefault(name: String, action: () -> Int): Int =
+fun Context.idOrDefault(name: String, action: ActionInt): Int =
     findRId(packageName + POINT + R + JOIN + ID, name) { action.invoke() }
 
 @JvmName("getLayoutId")
@@ -227,7 +227,7 @@ fun Context.idOrDefault(name: String, action: () -> Int): Int =
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取布局ID")
     ]
 )
-fun Context.layoutIdOrDefault(name: String, action: () -> Int): Int =
+fun Context.layoutIdOrDefault(name: String, action: ActionInt): Int =
     findRId(packageName + POINT + R + JOIN + LAYOUT, name) { action.invoke() }
 
 @JvmName("getMenuId")
@@ -237,7 +237,7 @@ fun Context.layoutIdOrDefault(name: String, action: () -> Int): Int =
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取菜单ID")
     ]
 )
-fun Context.menuIdOrDefault(name: String, action: () -> Int): Int =
+fun Context.menuIdOrDefault(name: String, action: ActionInt): Int =
     findRId(packageName + POINT + R + JOIN + MENU, name) { action.invoke() }
 
 @JvmName("getRawId")
@@ -247,7 +247,7 @@ fun Context.menuIdOrDefault(name: String, action: () -> Int): Int =
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取RAW ID")
     ]
 )
-fun Context.rawIdOrDefault(name: String, action: () -> Int): Int =
+fun Context.rawIdOrDefault(name: String, action: ActionInt): Int =
     findRId(packageName + POINT + R + JOIN + RAW, name) { action.invoke() }
 
 @JvmName("getStringId")
@@ -257,7 +257,7 @@ fun Context.rawIdOrDefault(name: String, action: () -> Int): Int =
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取字符串ID")
     ]
 )
-fun Context.stringIdOrDefault(name: String, action: () -> Int): Int =
+fun Context.stringIdOrDefault(name: String, action: ActionInt): Int =
     findRId(packageName + POINT + R + JOIN + STRING, name) { action.invoke() }
 
 @JvmName("getStyleId")
@@ -267,7 +267,7 @@ fun Context.stringIdOrDefault(name: String, action: () -> Int): Int =
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取样式ID")
     ]
 )
-fun Context.styleIdOrDefault(name: String, action: () -> Int): Int =
+fun Context.styleIdOrDefault(name: String, action: ActionInt): Int =
     findRId(packageName + POINT + R + JOIN + STYLE, name) { action.invoke() }
 
 @JvmName("getStyleableId")
@@ -277,7 +277,7 @@ fun Context.styleIdOrDefault(name: String, action: () -> Int): Int =
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取自定义属性组")
     ]
 )
-fun Context.styleableIdOrDefault(name: String, action: () -> IntArray): IntArray =
+fun Context.styleableIdOrDefault(name: String, action: ActionIntArray): IntArray =
     findRId(packageName + POINT + R + JOIN + STYLEABLE, name) { action.invoke() }
 
 @JvmName("getStyleableAttributeId")
@@ -287,11 +287,11 @@ fun Context.styleableIdOrDefault(name: String, action: () -> IntArray): IntArray
         VersionLog(Version.PEACHES, "added in version 0.0.4,获取自定义属性")
     ]
 )
-fun Context.styleableAttributeIdOrDefault(styleable: String, attr: String, action: () -> Int): Int =
+fun Context.styleableAttributeIdOrDefault(styleable: String, attr: String, action: ActionInt): Int =
     findRId(packageName + POINT + R + JOIN + STYLEABLE, styleable + "_" + attr) { action.invoke() }
 
 // findRIdResources
-internal fun <T> findRId(claName: String, name: String, action: () -> T): T =
+internal fun <T> findRId(claName: String, name: String, action: Action<T>): T =
     try {
         @Suppress("UNCHECKED_CAST")
         Class
