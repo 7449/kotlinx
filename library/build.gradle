@@ -13,7 +13,7 @@ android {
         kotlinOptions.freeCompilerArgs += ['-module-name', "androidx.kotlin.expand"]
     }
 }
-version = "0.0.3"
+version = "0.0.4"
 group = "com.ydevelop"
 androidArtifact {
     artifactId = "kotlinx"
