@@ -369,7 +369,7 @@ fun Fragment.fontExpand(@FontRes id: Int): Typeface =
         VersionLog(Version.BANANA, "init submit")
     ]
 )
-fun Fragment.insertImageUriExpand(contentValues: ContentValues): Uri =
+fun Fragment.insertImageUriExpand(contentValues: ContentValues): Uri? =
     requireContext().insertImageUriExpand(contentValues)
 
 @JvmName("appIntent")

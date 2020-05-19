@@ -1,9 +1,12 @@
 package com.expand.test
 
+import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.kotlin.expand.content.queryDataExpand
 import androidx.kotlin.expand.os.drawableIdExpand
 import androidx.kotlin.expand.os.layoutIdExpand
 import androidx.kotlin.expand.text.checkPwdRegexExpand
@@ -30,5 +33,6 @@ class MainActivity : AppCompatActivity() {
         Log.i("=====", "123456".toIntExpand().toString())
         Log.i("=====", "ssss123456".toIntExpand().toString())
         Log.i("=====", "22222".toIntOrDefault { 0 }.toString())
+        Log.i("=====", TextUtils.isEmpty(contentResolver.queryDataExpand(Uri.EMPTY)).toString())
     }
 }

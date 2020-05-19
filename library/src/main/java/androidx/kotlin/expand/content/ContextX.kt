@@ -365,22 +365,6 @@ fun Context.quantityStringExpand(@PluralsRes id: Int, quantity: Int): String =
 fun Context.fontExpand(@FontRes id: Int): Typeface =
     this.resources.getFont(id)
 
-@JvmName("insertImageUri")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
-fun Context.insertImageUriExpand(contentValues: ContentValues): Uri =
-    if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
-        contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
-            ?: throw KotlinNullPointerException()
-    } else {
-        contentResolver.insert(MediaStore.Images.Media.INTERNAL_CONTENT_URI, contentValues)
-            ?: throw KotlinNullPointerException()
-    }
-
 @JvmName("getAppIntent")
 @Version(
     version = [Version.BANANA],
@@ -470,17 +454,33 @@ fun Context.shareTextPlainExpand(title: String, message: String?) {
     startActivity(Intent.createChooser(textIntent, title))
 }
 
-@JvmName("findUriByFile")
+@JvmName("insertImageUri")
 @Version(
-    version = [Version.BANANA],
+    version = [Version.BANANA, Version.WATERMELON],
     log = [
-        VersionLog(Version.BANANA, "init submit")
+        VersionLog(Version.BANANA, "init submit"),
+        VersionLog(Version.WATERMELON, "return null")
     ]
 )
-fun Context.findUriByFileExpand(
+fun Context.insertImageUriExpand(contentValues: ContentValues): Uri? =
+    if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+        contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+    } else {
+        null
+    }
+
+@JvmName("insertImageUri")
+@Version(
+    version = [Version.BANANA, Version.WATERMELON],
+    log = [
+        VersionLog(Version.BANANA, "init submit"),
+        VersionLog(Version.WATERMELON, "findUriByFileExpand rename to insertImageUri")
+    ]
+)
+fun Context.insertImageUriExpand(
     file: File,
     relativePath: String = Environment.DIRECTORY_DCIM
-): Uri = insertImageUriExpand(ContentValues().apply {
+): Uri? = insertImageUriExpand(ContentValues().apply {
     if (hasQExpand()) {
         put(MediaStore.MediaColumns.DISPLAY_NAME, file.name)
         put(MediaStore.MediaColumns.RELATIVE_PATH, relativePath)

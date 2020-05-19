@@ -33,5 +33,10 @@ annotation class Version(val version: IntArray, val log: Array<VersionLog>) {
          * implementation 'com.ydevelop:kotlinx:0.0.4'
          */
         const val PEACHES: Int = 4
+
+        /**
+         * implementation 'com.ydevelop:kotlinx:0.0.5'
+         */
+        const val WATERMELON: Int = 5
     }
 }
