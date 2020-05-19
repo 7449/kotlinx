@@ -489,6 +489,39 @@ fun Context.insertImageUriExpand(
     }
 })
 
+@JvmName("insertVideoUri")
+@Version(
+    version = [Version.WATERMELON],
+    log = [
+        VersionLog(Version.WATERMELON, "init submit")
+    ]
+)
+fun Context.insertVideoUriExpand(contentValues: ContentValues): Uri? =
+    if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+        contentResolver.insert(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, contentValues)
+    } else {
+        null
+    }
+
+@JvmName("insertVideoUri")
+@Version(
+    version = [Version.WATERMELON],
+    log = [
+        VersionLog(Version.WATERMELON, "init submit")
+    ]
+)
+fun Context.insertVideoUriExpand(
+    file: File,
+    relativePath: String = Environment.DIRECTORY_DCIM
+): Uri? = insertVideoUriExpand(ContentValues().apply {
+    if (hasQExpand()) {
+        put(MediaStore.MediaColumns.DISPLAY_NAME, file.name)
+        put(MediaStore.MediaColumns.RELATIVE_PATH, relativePath)
+    } else {
+        put(MediaStore.MediaColumns.DATA, file.path)
+    }
+})
+
 @JvmName("openVideo")
 @Version(
     version = [Version.BANANA],

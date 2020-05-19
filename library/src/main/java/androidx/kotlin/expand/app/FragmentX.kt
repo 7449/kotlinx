@@ -372,6 +372,16 @@ fun Fragment.fontExpand(@FontRes id: Int): Typeface =
 fun Fragment.insertImageUriExpand(contentValues: ContentValues): Uri? =
     requireContext().insertImageUriExpand(contentValues)
 
+@JvmName("insertVideoUri")
+@Version(
+    version = [Version.WATERMELON],
+    log = [
+        VersionLog(Version.WATERMELON, "init submit")
+    ]
+)
+fun Fragment.insertVideoUriExpand(contentValues: ContentValues): Uri? =
+    requireContext().insertVideoUriExpand(contentValues)
+
 @JvmName("appIntent")
 @Version(
     version = [Version.BANANA],

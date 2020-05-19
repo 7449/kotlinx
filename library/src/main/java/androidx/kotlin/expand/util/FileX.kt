@@ -10,6 +10,7 @@ import android.provider.MediaStore
 import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
 import androidx.kotlin.expand.content.insertImageUriExpand
+import androidx.kotlin.expand.content.insertVideoUriExpand
 import androidx.kotlin.expand.version.hasQExpand
 import java.io.File
 import java.io.InputStream
@@ -48,14 +49,14 @@ fun Context.lowerVersionFileExpand(
     }, fileName
 )
 
-@JvmName("copyFile")
+@JvmName("copyImage")
 @Version(
     version = [Version.WATERMELON],
     log = [
         VersionLog(Version.WATERMELON, "init submit")
     ]
 )
-fun Context.copyFileExpand(
+fun Context.copyImageExpand(
     inputUri: Uri,
     displayName: String,
     relativePath: String = Environment.DIRECTORY_DCIM
@@ -67,6 +68,29 @@ fun Context.copyFileExpand(
     contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, displayName)
     contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, relativePath)
     val outPutUri: Uri? = insertImageUriExpand(contentValues)
+    outPutUri ?: return null
+    return copyFileExpand(inputUri, outPutUri)
+}
+
+@JvmName("copyVideo")
+@Version(
+    version = [Version.WATERMELON],
+    log = [
+        VersionLog(Version.WATERMELON, "init submit")
+    ]
+)
+fun Context.copyVideoExpand(
+    inputUri: Uri,
+    displayName: String,
+    relativePath: String = Environment.DIRECTORY_DCIM
+): Uri? {
+    if (!hasQExpand()) {
+        return null
+    }
+    val contentValues = ContentValues()
+    contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, displayName)
+    contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, relativePath)
+    val outPutUri: Uri? = insertVideoUriExpand(contentValues)
     outPutUri ?: return null
     return copyFileExpand(inputUri, outPutUri)
 }
