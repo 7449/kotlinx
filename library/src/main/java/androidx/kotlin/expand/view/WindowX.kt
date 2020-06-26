@@ -2,6 +2,7 @@
 
 package androidx.kotlin.expand.view
 
+import android.util.DisplayMetrics
 import android.view.View
 import android.view.Window
 import androidx.annotation.ColorInt
@@ -11,12 +12,7 @@ import androidx.kotlin.expand.graphics.isLightColorExpand
 import androidx.kotlin.expand.version.hasMExpand
 
 @JvmName("setStatusBarColor")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Window.statusBarColorExpand(@ColorInt color: Int) {
     if (hasMExpand()) {
         statusBarColor = color
@@ -26,4 +22,12 @@ fun Window.statusBarColorExpand(@ColorInt color: Int) {
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
         }
     }
+}
+
+@JvmName("square")
+@Version([VersionLog(Version.CHERRY)])
+fun Window.squareExpand(count: Int): Int {
+    val dm = DisplayMetrics()
+    windowManager.defaultDisplay.getMetrics(dm)
+    return dm.widthPixels / count
 }

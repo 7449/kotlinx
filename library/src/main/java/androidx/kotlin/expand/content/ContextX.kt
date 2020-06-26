@@ -26,104 +26,49 @@ import java.io.File
 import java.io.InputStreamReader
 import java.util.concurrent.Executor
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 val Context.dataDirCompat: File?
     get() = ContextCompat.getDataDir(this)
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 val Context.obbDirsCompat: Array<File>
     get() = ContextCompat.getObbDirs(this)
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 val Context.externalCacheDirsCompat: Array<File>
     get() = ContextCompat.getExternalCacheDirs(this)
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 val Context.noBackupFilesDirCompat: File?
     get() = ContextCompat.getNoBackupFilesDir(this)
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 val Context.codeCacheDirCompat: File
     get() = ContextCompat.getCodeCacheDir(this)
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 val Context.isDeviceProtectedStorageCompat: Boolean
     get() = ContextCompat.isDeviceProtectedStorage(this)
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 val Context.mainExecutorCompat: Executor
     get() = ContextCompat.getMainExecutor(this)
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 val Context.isLandscapeExpand: Boolean
     get() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 val Context.userIconExpand: Drawable
     get() = getAppIconExpand(packageName)
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 val Context.isCameraExpand: Boolean
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     get() = packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
-val Context.getStatusBarHeightExpand: Int
+@Version([VersionLog(Version.BANANA), VersionLog(Version.CHERRY)])
+val Context.statusBarHeightExpand: Int
     get() {
         val resourceId: Int = resources.getIdentifier("status_bar_height", "dimen", "android")
         val height: Int = resources.getDimensionPixelSize(resourceId)
@@ -131,213 +76,108 @@ val Context.getStatusBarHeightExpand: Int
     }
 
 @JvmName("getAppIcon")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.getAppIconExpand(packageName: String): Drawable =
     packageManager.getApplicationInfo(packageName, 0).loadIcon(packageManager)
 
 @JvmName("toast")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.toastExpand(any: Any): Unit =
     Toast.makeText(this, any.toString(), Toast.LENGTH_SHORT).show()
 
 @JvmName("getExternalFilesDirs")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.externalFilesDirsExpand(type: String?): Array<File> =
     ContextCompat.getExternalFilesDirs(this, type)
 
 @JvmName("getDrawable")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.drawableExpand(@DrawableRes id: Int): Drawable? =
     ContextCompat.getDrawable(this, id)
 
 @JvmName("getColorStateList")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.colorStateListExpand(@ColorRes id: Int): ColorStateList? =
     ContextCompat.getColorStateList(this, id)
 
 @JvmName("getColor")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.colorExpand(@ColorRes id: Int): Int =
     ContextCompat.getColor(this, id)
 
 @JvmName("checkPermission")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.checkPermissionExpand(permission: String): Int =
     ContextCompat.checkSelfPermission(this, permission)
 
 @JvmName("getBoolean")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.booleanExpand(@BoolRes id: Int): Boolean =
     this.resources.getBoolean(id)
 
 @JvmName("getInt")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.intExpand(@IntegerRes id: Int): Int =
     this.resources.getInteger(id)
 
 @JvmName("getFloat")
 @RequiresApi(Build.VERSION_CODES.Q)
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.floatExpand(@DimenRes id: Int): Float =
     this.resources.getFloat(id)
 
 @JvmName("getText")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.textExpand(@StringRes id: Int): CharSequence =
     this.resources.getText(id)
 
 @JvmName("getString")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.stringExpand(@StringRes id: Int): String =
     this.resources.getString(id)
 
 @JvmName("getString")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.stringExpand(@StringRes id: Int, vararg formatArgs: Any): String =
     this.resources.getString(id, formatArgs)
 
 @JvmName("getTextArray")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.textArrayExpand(@ArrayRes id: Int): Array<CharSequence> =
     this.resources.getTextArray(id)
 
 @JvmName("getStringArray")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.stringArrayExpand(@ArrayRes id: Int): Array<String> =
     this.resources.getStringArray(id)
 
 @JvmName("getIntArray")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.intArrayExpand(@ArrayRes id: Int): IntArray =
     this.resources.getIntArray(id)
 
 @JvmName("getDimension")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.dimensionExpand(@DimenRes id: Int): Float =
     this.resources.getDimension(id)
 
 @JvmName("getDimensionPixelOffset")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.dimensionPixelOffsetExpand(@DimenRes id: Int): Int =
     this.resources.getDimensionPixelOffset(id)
 
 @JvmName("getDimensionPixelSize")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.dimensionPixelSizeExpand(@DimenRes id: Int): Int =
     this.resources.getDimensionPixelSize(id)
 
 @JvmName("getQuantityText")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.quantityTextExpand(@PluralsRes id: Int, quantity: Int): CharSequence =
     this.resources.getQuantityText(id, quantity)
 
 @JvmName("getQuantityString")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.quantityStringExpand(
     @PluralsRes id: Int,
     quantity: Int,
@@ -345,93 +185,48 @@ fun Context.quantityStringExpand(
 ): CharSequence = this.resources.getQuantityString(id, quantity, formatArgs)
 
 @JvmName("getQuantityString")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.quantityStringExpand(@PluralsRes id: Int, quantity: Int): String =
     this.resources.getQuantityString(id, quantity)
 
 @JvmName("getFont")
 @RequiresApi(Build.VERSION_CODES.O)
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.fontExpand(@FontRes id: Int): Typeface =
     this.resources.getFont(id)
 
 @JvmName("getAppIntent")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.appIntentExpand(packageName: String): Intent? =
     packageManager.getLaunchIntentForPackage(packageName)
 
 @JvmName("getMinimumDrawable")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.minimumDrawableExpand(@DrawableRes id: Int, @ColorInt color: Int): Drawable? =
     drawableExpand(id)?.minimumWidthAndHeightDrawableExpand(color)
 
 @JvmName("moveToNextToId")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.moveToNextToIdExpand(uri: Uri): Boolean =
     contentResolver.moveToNextToIdExpand(uri)
 
 @JvmName("moveToNext")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.moveToNextExpand(uri: Uri, name: String): Boolean =
     contentResolver.moveToNextExpand(uri, name)
 
 @JvmName("findIdByUri")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.findIdByUriExpand(uri: Uri): Long =
     contentResolver.queryIdExpand(uri)
 
 @JvmName("findPathByUri")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.findPathByUriExpand(uri: Uri): String? =
     contentResolver.queryDataExpand(uri)
 
 @JvmName("getJson")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.getJsonExpand(fileName: String): String {
     val stringBuilder = StringBuilder()
     BufferedReader(InputStreamReader(assets.open(fileName))).use { it ->
@@ -441,12 +236,7 @@ fun Context.getJsonExpand(fileName: String): String {
 }
 
 @JvmName("shareTextPlain")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.shareTextPlainExpand(title: String, message: String?) {
     val textIntent = Intent(Intent.ACTION_SEND)
     textIntent.type = "text/plain"
@@ -455,13 +245,7 @@ fun Context.shareTextPlainExpand(title: String, message: String?) {
 }
 
 @JvmName("insertImageUri")
-@Version(
-    version = [Version.BANANA, Version.WATERMELON],
-    log = [
-        VersionLog(Version.BANANA, "init submit"),
-        VersionLog(Version.WATERMELON, "return null")
-    ]
-)
+@Version([VersionLog(Version.BANANA), VersionLog(Version.WATERMELON)])
 fun Context.insertImageUriExpand(contentValues: ContentValues): Uri? =
     if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
         contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
@@ -470,13 +254,7 @@ fun Context.insertImageUriExpand(contentValues: ContentValues): Uri? =
     }
 
 @JvmName("insertImageUri")
-@Version(
-    version = [Version.BANANA, Version.WATERMELON],
-    log = [
-        VersionLog(Version.BANANA, "init submit"),
-        VersionLog(Version.WATERMELON, "findUriByFileExpand rename to insertImageUri")
-    ]
-)
+@Version([VersionLog(Version.BANANA), VersionLog(Version.WATERMELON)])
 fun Context.insertImageUriExpand(
     file: File,
     relativePath: String = Environment.DIRECTORY_DCIM
@@ -490,12 +268,7 @@ fun Context.insertImageUriExpand(
 })
 
 @JvmName("insertVideoUri")
-@Version(
-    version = [Version.WATERMELON],
-    log = [
-        VersionLog(Version.WATERMELON, "init submit")
-    ]
-)
+@Version([VersionLog(Version.WATERMELON)])
 fun Context.insertVideoUriExpand(contentValues: ContentValues): Uri? =
     if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
         contentResolver.insert(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, contentValues)
@@ -504,12 +277,7 @@ fun Context.insertVideoUriExpand(contentValues: ContentValues): Uri? =
     }
 
 @JvmName("insertVideoUri")
-@Version(
-    version = [Version.WATERMELON],
-    log = [
-        VersionLog(Version.WATERMELON, "init submit")
-    ]
-)
+@Version([VersionLog(Version.WATERMELON)])
 fun Context.insertVideoUriExpand(
     file: File,
     relativePath: String = Environment.DIRECTORY_DCIM
@@ -523,12 +291,7 @@ fun Context.insertVideoUriExpand(
 })
 
 @JvmName("openVideo")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Context.openVideoExpand(uri: Uri, error: () -> Unit): Unit = try {
     val video = Intent(Intent.ACTION_VIEW)
     video.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -539,13 +302,8 @@ fun Context.openVideoExpand(uri: Uri, error: () -> Unit): Unit = try {
 }
 
 @JvmName("openAppStore")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
-fun Context.openAppStoreExpand(error: () -> Unit): Unit = try {
+@Version([VersionLog(Version.BANANA), VersionLog(Version.CHERRY)])
+fun Context.openAppStoreExpand(packageName: String, error: () -> Unit): Unit = try {
     val market = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
     market.flags = Intent.FLAG_ACTIVITY_NEW_TASK
     startActivity(market)

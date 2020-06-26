@@ -7,41 +7,21 @@ import androidx.kotlin.expand.annotation.VersionLog
 import androidx.viewpager.widget.ViewPager
 
 @JvmName("addOnPageScrolled")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun ViewPager.doOnPageScrolledExpand(action: (position: Int, positionOffset: Float, positionOffsetPixels: Int) -> Unit): ViewPager =
     addOnPageChangeListenerExpand(onPageScrolled = action)
 
 @JvmName("addOnPageSelected")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun ViewPager.doOnPageSelectedExpand(action: (position: Int) -> Unit): ViewPager =
     addOnPageChangeListenerExpand(onPageSelected = action)
 
 @JvmName("addOnPageScrollStateChanged")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun ViewPager.doOnPageScrollStateChangedExpand(action: (state: Int) -> Unit): ViewPager =
     addOnPageChangeListenerExpand(onPageScrollStateChanged = action)
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun ViewPager.addOnPageChangeListenerExpand(
     onPageScrolled: (position: Int, positionOffset: Float, positionOffsetPixels: Int) -> Unit = { _: Int, _: Float, _: Int -> },
     onPageSelected: (position: Int) -> Unit = { _: Int -> },

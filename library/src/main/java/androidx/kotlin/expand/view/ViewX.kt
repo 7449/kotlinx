@@ -8,12 +8,7 @@ import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
 
 @JvmName("addOnPreDrawListener")
-@Version(
-    version = [Version.PINEAPPLE],
-    log = [
-        VersionLog(Version.PINEAPPLE, "init submit")
-    ]
-)
+@Version([VersionLog(Version.PINEAPPLE)])
 fun View.addOnPreDrawListenerExpand(action: () -> Unit) {
     viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
         override fun onPreDraw(): Boolean {
@@ -25,12 +20,7 @@ fun View.addOnPreDrawListenerExpand(action: () -> Unit) {
 }
 
 @JvmName("postDelayed")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun View.postDelayedExpand(
     delayInMillis: Long,
     action: () -> Unit
@@ -41,66 +31,31 @@ fun View.postDelayedExpand(
 }
 
 @JvmName("isVisible")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun View.isVisibleExpand(): Boolean = visibility == View.VISIBLE
 
 @JvmName("isGone")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun View.isGoneExpand(): Boolean = visibility == View.GONE
 
 @JvmName("isInvisible")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun View.isInVisibleExpand(): Boolean = visibility == View.INVISIBLE
 
 @JvmName("show")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun View.showExpand(): View = apply { if (!isVisibleExpand()) visibility = View.VISIBLE }
 
 @JvmName("hide")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun View.hideExpand(): View = apply { if (!isGoneExpand()) visibility = View.GONE }
 
 @JvmName("invisible")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun View.invisibleExpand(): View = apply { if (!isInVisibleExpand()) visibility = View.INVISIBLE }
 
 @JvmName("goneViews")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun goneViews(vararg views: View?) {
     for (view in views) {
         view?.hideExpand()
@@ -108,12 +63,7 @@ fun goneViews(vararg views: View?) {
 }
 
 @JvmName("visibleViews")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun visibleViews(vararg views: View?) {
     for (view in views) {
         view?.showExpand()
@@ -121,12 +71,7 @@ fun visibleViews(vararg views: View?) {
 }
 
 @JvmName("invisibleViews")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun invisibleView(vararg views: View?) {
     for (view in views) {
         view?.invisibleExpand()

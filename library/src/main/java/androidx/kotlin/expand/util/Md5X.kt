@@ -14,12 +14,7 @@ import kotlin.experimental.and
 internal const val MD5 = "MD5"
 
 @JvmName("encodeMD5")
-@Version(
-    version = [Version.PEACHES],
-    log = [
-        VersionLog(Version.PEACHES, "added in version 0.0.4")
-    ]
-)
+@Version([VersionLog(Version.PEACHES)])
 fun String.encodeMD5Expand(): String {
     try {
         val digest: MessageDigest = MessageDigest.getInstance(MD5)
@@ -32,12 +27,7 @@ fun String.encodeMD5Expand(): String {
 }
 
 @JvmName("toHexString")
-@Version(
-    version = [Version.PEACHES],
-    log = [
-        VersionLog(Version.PEACHES, "added in version 0.0.4")
-    ]
-)
+@Version([VersionLog(Version.PEACHES)])
 fun ByteArray.toHexStringExpand(): String {
     val expectedStringLen: Int = size * 2
     val sb = StringBuilder(expectedStringLen)
@@ -52,12 +42,7 @@ fun ByteArray.toHexStringExpand(): String {
 }
 
 @JvmName("encodeMD5")
-@Version(
-    version = [Version.PEACHES],
-    log = [
-        VersionLog(Version.PEACHES, "added in version 0.0.4")
-    ]
-)
+@Version([VersionLog(Version.PEACHES)])
 fun File.encodeMD5Expand(): String? {
     val digest: MessageDigest?
     val buffer = ByteArray(1024)

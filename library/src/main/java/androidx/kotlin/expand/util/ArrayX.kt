@@ -14,23 +14,13 @@ import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
 
 @Casually
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 interface OnSparseArrayListener<T> {
     fun putValue(key: Int, value: T)
 }
 
 @Casually
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun <T> SparseArray<T>.putExpand(action: OnSparseArrayListener<T>.() -> Unit): SparseArray<T> {
     action(object : OnSparseArrayListener<T> {
         override fun putValue(key: Int, value: T) {
@@ -41,12 +31,7 @@ fun <T> SparseArray<T>.putExpand(action: OnSparseArrayListener<T>.() -> Unit): S
 }
 
 @Casually
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun SparseBooleanArray.putExpand(action: OnSparseArrayListener<Boolean>.() -> Unit): SparseBooleanArray {
     action(object : OnSparseArrayListener<Boolean> {
         override fun putValue(key: Int, value: Boolean) {
@@ -57,12 +42,7 @@ fun SparseBooleanArray.putExpand(action: OnSparseArrayListener<Boolean>.() -> Un
 }
 
 @Casually
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun SparseIntArray.putExpand(action: OnSparseArrayListener<Int>.() -> Unit): SparseIntArray {
     action(object : OnSparseArrayListener<Int> {
         override fun putValue(key: Int, value: Int) {
@@ -74,12 +54,7 @@ fun SparseIntArray.putExpand(action: OnSparseArrayListener<Int>.() -> Unit): Spa
 
 @Casually
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun SparseLongArray.putExpand(action: OnSparseArrayListener<Long>.() -> Unit): SparseLongArray {
     action(object : OnSparseArrayListener<Long> {
         override fun putValue(key: Int, value: Long) {
@@ -90,12 +65,7 @@ fun SparseLongArray.putExpand(action: OnSparseArrayListener<Long>.() -> Unit): S
 }
 
 @Casually
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun <T> sparseArrayOf(vararg pairs: Pair<Int, T>): SparseArray<T> =
     sparseArrayOf<T>().apply {
         for ((key, value) in pairs) {
@@ -104,12 +74,7 @@ fun <T> sparseArrayOf(vararg pairs: Pair<Int, T>): SparseArray<T> =
     }
 
 @Casually
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun sparseBooleanArrayOf(vararg pairs: Pair<Int, Boolean>): SparseBooleanArray =
     sparseBooleanArrayOf().apply {
         for ((key, value) in pairs) {
@@ -118,12 +83,7 @@ fun sparseBooleanArrayOf(vararg pairs: Pair<Int, Boolean>): SparseBooleanArray =
     }
 
 @Casually
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun sparseIntArrayOf(vararg pairs: Pair<Int, Int>): SparseIntArray =
     sparseIntArrayOf().apply {
         for ((key, value) in pairs) {
@@ -133,12 +93,7 @@ fun sparseIntArrayOf(vararg pairs: Pair<Int, Int>): SparseIntArray =
 
 @Casually
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun sparseLongArrayOf(vararg pairs: Pair<Int, Long>): SparseLongArray =
     sparseLongArrayOf().apply {
         for ((key, value) in pairs) {
@@ -147,38 +102,18 @@ fun sparseLongArrayOf(vararg pairs: Pair<Int, Long>): SparseLongArray =
     }
 
 @JvmName("getEmptySparseArray")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 inline fun <T> sparseArrayOf(): SparseArray<T> = SparseArray<T>()
 
 @JvmName("getEmptySparseBooleanArray")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 inline fun sparseBooleanArrayOf(): SparseBooleanArray = SparseBooleanArray()
 
 @JvmName("getEmptySparseIntArray")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 inline fun sparseIntArrayOf(): SparseIntArray = SparseIntArray()
 
 @JvmName("getEmptySparseLongArray")
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 inline fun sparseLongArrayOf(): SparseLongArray = SparseLongArray()

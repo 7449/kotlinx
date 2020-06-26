@@ -25,13 +25,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         TestJava.test(this)
-        TestApp.testCursor(this)
         Log.i("=====", "10398830@sss".checkPwdRegexExpand.toString())
         Log.i("=====", "---sjnsdkfhsdflsdjfopfnof".encodeMD5Expand())
         Log.i("=====", layoutIdExpand("activity_main", -1).toString())
         Log.i("=====", drawableIdExpand("ic_launcher_background", -1).toString())
-        Log.i("=====", "123456".toIntExpand().toString())
-        Log.i("=====", "ssss123456".toIntExpand().toString())
+        Log.i("=====", "123456".toIntExpand(0).toString())
+        Log.i("=====", "ssss123456".toIntExpand(0).toString())
         Log.i("=====", "22222".toIntOrDefault { 0 }.toString())
         Log.i("=====", TextUtils.isEmpty(contentResolver.queryDataExpand(Uri.EMPTY)).toString())
     }

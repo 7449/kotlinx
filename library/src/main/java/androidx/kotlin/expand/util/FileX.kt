@@ -17,12 +17,7 @@ import java.io.InputStream
 import java.io.OutputStream
 
 @JvmName("mkdirsFile")
-@Version(
-    version = [Version.WATERMELON],
-    log = [
-        VersionLog(Version.WATERMELON, "init submit")
-    ]
-)
+@Version([VersionLog(Version.WATERMELON)])
 fun String.mkdirsFileExpand(child: String): File {
     val pathFile = File(this, child)
     if (!pathFile.exists()) {
@@ -32,12 +27,7 @@ fun String.mkdirsFileExpand(child: String): File {
 }
 
 @JvmName("lowerVersionFile")
-@Version(
-    version = [Version.WATERMELON],
-    log = [
-        VersionLog(Version.WATERMELON, "init submit")
-    ]
-)
+@Version([VersionLog(Version.WATERMELON)])
 fun Context.lowerVersionFileExpand(
     fileName: String,
     relativePath: String = Environment.DIRECTORY_DCIM
@@ -50,12 +40,7 @@ fun Context.lowerVersionFileExpand(
 )
 
 @JvmName("copyImage")
-@Version(
-    version = [Version.WATERMELON],
-    log = [
-        VersionLog(Version.WATERMELON, "init submit")
-    ]
-)
+@Version([VersionLog(Version.WATERMELON)])
 fun Context.copyImageExpand(
     inputUri: Uri,
     displayName: String,
@@ -73,12 +58,7 @@ fun Context.copyImageExpand(
 }
 
 @JvmName("copyVideo")
-@Version(
-    version = [Version.WATERMELON],
-    log = [
-        VersionLog(Version.WATERMELON, "init submit")
-    ]
-)
+@Version([VersionLog(Version.WATERMELON)])
 fun Context.copyVideoExpand(
     inputUri: Uri,
     displayName: String,
@@ -96,12 +76,7 @@ fun Context.copyVideoExpand(
 }
 
 @JvmName("copyFile")
-@Version(
-    version = [Version.WATERMELON],
-    log = [
-        VersionLog(Version.WATERMELON, "init submit")
-    ]
-)
+@Version([VersionLog(Version.WATERMELON)])
 fun Context.copyFileExpand(inputUri: Uri, outPutUri: Uri): Uri? {
     val outStream: OutputStream = contentResolver.openOutputStream(outPutUri) ?: return null
     val inStream: InputStream = contentResolver.openInputStream(inputUri) ?: return null

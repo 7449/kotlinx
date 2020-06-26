@@ -7,81 +7,41 @@ import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
 
 @JvmName("isMinVersion")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Int.minVersionExpand(): Boolean =
     Build.VERSION.SDK_INT >= this
 
 @JvmName("isMaxVersion")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Int.maxVersionExpand(): Boolean =
     Build.VERSION.SDK_INT <= this
 
 @JvmName("getCurrentVersion")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun Int.currentVersionExpand(): Boolean =
     Build.VERSION.SDK_INT == this
 
 @JvmName("isLollipop")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun hasLExpand(): Boolean =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
 
 @JvmName("isM")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun hasMExpand(): Boolean =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
 
 @JvmName("isN")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun hasNExpand(): Boolean =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 
 @JvmName("isQ")
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 fun hasQExpand(): Boolean =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
-@Version(
-    version = [Version.BANANA],
-    log = [
-        VersionLog(Version.BANANA, "init submit")
-    ]
-)
+@Version([VersionLog(Version.BANANA)])
 class CheckVersion(private val version: String) : Comparable<CheckVersion> {
 
     init {

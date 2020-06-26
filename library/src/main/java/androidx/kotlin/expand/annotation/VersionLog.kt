@@ -12,4 +12,4 @@ package androidx.kotlin.expand.annotation
 )
 @Retention(AnnotationRetention.BINARY)
 @MustBeDocumented
-annotation class VersionLog(val version: Int, val versionLog: String)
+annotation class VersionLog(val version: Int, val versionLog: String = "DO NOTHING")
