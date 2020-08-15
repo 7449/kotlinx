@@ -4,14 +4,8 @@ package androidx.kotlin.expand.util
 
 import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
-import androidx.kotlin.expand.os.tryCatchExpand
 import java.math.BigDecimal
 import java.math.BigInteger
-
-@JvmName("toBoolean")
-@Version([VersionLog(Version.CHERRY)])
-fun String.toBooleanExpand(defaultValue: Boolean): Boolean =
-    toBooleanOrDefault { defaultValue }
 
 @JvmName("toByte")
 @Version([VersionLog(Version.CHERRY)])
@@ -53,47 +47,42 @@ fun String.toBigIntegerExpand(defaultValue: BigInteger): BigInteger =
 fun String.toBigDecimalExpand(defaultValue: BigDecimal): BigDecimal =
     toBigDecimalOrDefault { defaultValue }
 
-@JvmName("toBoolean")
-@Version([VersionLog(Version.CHERRY)])
-fun String.toBooleanOrDefault(action: () -> Boolean): Boolean =
-    tryCatchExpand({ toBoolean() }, action.invoke())
-
 @JvmName("toByte")
 @Version([VersionLog(Version.CHERRY)])
 fun String.toByteOrDefault(action: () -> Byte): Byte =
-    tryCatchExpand({ toByte() }, action.invoke())
+    toByteOrNull() ?: action.invoke()
 
 @JvmName("toShort")
 @Version([VersionLog(Version.CHERRY)])
 fun String.toShortOrDefault(action: () -> Short): Short =
-    tryCatchExpand({ toShort() }, action.invoke())
+    toShortOrNull() ?: action.invoke()
 
 @JvmName("toInt")
 @Version([VersionLog(Version.PEACHES)])
 fun String.toIntOrDefault(action: () -> Int): Int =
-    tryCatchExpand({ toInt() }, action.invoke())
+    toIntOrNull() ?: action.invoke()
 
 @JvmName("toLong")
 @Version([VersionLog(Version.CHERRY)])
 fun String.toLongOrDefault(action: () -> Long): Long =
-    tryCatchExpand({ toLong() }, action.invoke())
+    toLongOrNull() ?: action.invoke()
 
 @JvmName("toFloat")
 @Version([VersionLog(Version.CHERRY)])
 fun String.toFloatOrDefault(action: () -> Float): Float =
-    tryCatchExpand({ toFloat() }, action.invoke())
+    toFloatOrNull() ?: action.invoke()
 
 @JvmName("toDouble")
 @Version([VersionLog(Version.CHERRY)])
 fun String.toDoubleOrDefault(action: () -> Double): Double =
-    tryCatchExpand({ toDouble() }, action.invoke())
+    toDoubleOrNull() ?: action.invoke()
 
 @JvmName("toBigInteger")
 @Version([VersionLog(Version.CHERRY)])
 fun String.toBigIntegerOrDefault(action: () -> BigInteger): BigInteger =
-    tryCatchExpand({ toBigInteger() }, action.invoke())
+    toBigIntegerOrNull() ?: action.invoke()
 
 @JvmName("toBigDecimal")
 @Version([VersionLog(Version.CHERRY)])
 fun String.toBigDecimalOrDefault(action: () -> BigDecimal): BigDecimal =
-    tryCatchExpand({ toBigDecimal() }, action.invoke())
+    toBigDecimalOrNull() ?: action.invoke()

@@ -47,16 +47,14 @@ fun EditText.disableShowSoftInputExpand() {
     }
     val cls = EditText::class.java
     var method: Method
-    try {
+    runCatching {
         method = cls.getMethod("setShowSoftInputOnFocus", Boolean::class.javaPrimitiveType)
         method.isAccessible = true
         method.invoke(this, false)
-    } catch (ignored: Exception) {
     }
-    try {
+    runCatching {
         method = cls.getMethod("setSoftInputShownOnFocus", Boolean::class.javaPrimitiveType)
         method.isAccessible = true
         method.invoke(this, false)
-    } catch (ignored: Exception) {
     }
 }

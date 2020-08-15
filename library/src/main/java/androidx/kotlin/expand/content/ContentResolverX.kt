@@ -40,9 +40,9 @@ fun ContentResolver.queryDataExpand(uri: Uri): String? =
 fun ContentResolver.queryIdExpand(uri: Uri): Long {
     val split = uri.toString().split("/")
     var id = -1L
-    try {
+    runCatching {
         id = split[split.size - 1].toLong()
-    } catch (e: Exception) {
+    }.onFailure {
         queryExpand(uri, MediaStore.Files.FileColumns._ID).use {
             val cursor = it ?: return@use -1L
             while (cursor.moveToNext()) {

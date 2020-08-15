@@ -8,7 +8,6 @@ import java.io.File
 import java.io.FileInputStream
 import java.math.BigInteger
 import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 import kotlin.experimental.and
 
 internal const val MD5 = "MD5"
@@ -16,14 +15,11 @@ internal const val MD5 = "MD5"
 @JvmName("encodeMD5")
 @Version([VersionLog(Version.PEACHES)])
 fun String.encodeMD5Expand(): String {
-    try {
+    return runCatching {
         val digest: MessageDigest = MessageDigest.getInstance(MD5)
         digest.update(toByteArray())
-        return digest.digest().toHexStringExpand()
-    } catch (e: NoSuchAlgorithmException) {
-        e.printStackTrace()
-    }
-    return ""
+        digest.digest().toHexStringExpand()
+    }.getOrElse { "" }
 }
 
 @JvmName("toHexString")

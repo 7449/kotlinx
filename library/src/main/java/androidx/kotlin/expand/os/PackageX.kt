@@ -33,45 +33,54 @@ val Context.versionCodeLongExpand: Long
 @JvmName("appVersionName")
 @Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
 fun Context.appVersionNameExpand(packageName: String): String {
-    return tryCatchExpand({
-        packageManager.getPackageInfo(packageName, 0).versionName
-    }, "")
+    return runCatching {
+        packageManager.getPackageInfo(
+            packageName,
+            0
+        ).versionName
+    }.getOrElse { "" }
 }
 
 @JvmName("appVersionCodeInt")
 @Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
 fun Context.appVersionCodeIntExpand(packageName: String): Int {
-    return tryCatchExpand({
-        packageManager.getPackageInfo(packageName, 0).versionCode
-    }, -1)
+    return runCatching {
+        packageManager.getPackageInfo(
+            packageName,
+            0
+        ).versionCode
+    }.getOrElse { -1 }
 }
 
 @JvmName("appName")
 @Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
 fun Context.appNameExpand(packageName: String): String {
-    return tryCatchExpand({
+    return runCatching {
         packageManager.getApplicationInfo(packageName, 0).loadLabel(packageManager).toString()
-    }, "")
+    }.getOrElse { "" }
 }
 
 @JvmName("isApkDebugAble")
 @Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
 fun Context.isApkDebugAbleExpand(packageName: String): Boolean {
-    return tryCatchExpand({
+    return runCatching {
         packageManager.getPackageInfo(
             packageName,
             PackageManager.GET_ACTIVITIES
         ).applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
-    }, false)
+    }.getOrElse { false }
 }
 
 @JvmName("appVersionCodeLong")
 @Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
 @RequiresApi(Build.VERSION_CODES.P)
 fun Context.appVersionCodeLongExpand(packageName: String): Long {
-    return tryCatchExpand({
-        packageManager.getPackageInfo(packageName, 0).longVersionCode
-    }, -1)
+    return runCatching {
+        packageManager.getPackageInfo(
+            packageName,
+            0
+        ).longVersionCode
+    }.getOrElse { -1 }
 }
 
 @Version([VersionLog(Version.PEACHES)])
@@ -86,15 +95,18 @@ fun Context.isInstalledExpand(packageName: String): Boolean =
 @JvmName("isSystemApp")
 @Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
 fun Context.isSystemAppExpand(packageName: String): Boolean {
-    return tryCatchExpand({
-        packageManager.getApplicationInfo(packageName, 0).flags and ApplicationInfo.FLAG_SYSTEM > 0
-    }, false)
+    return runCatching {
+        packageManager.getApplicationInfo(
+            packageName,
+            0
+        ).flags and ApplicationInfo.FLAG_SYSTEM > 0
+    }.getOrElse { false }
 }
 
 @JvmName("uninstallApp")
 @Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
 fun Context.uninstallAppExpand(packageName: String, action: () -> Unit) {
-    tryCatchOrDefault({
+    runCatching {
         startActivity(Intent(
             Intent.ACTION_DELETE, Uri.parse(
                 StringBuilder(32).append("package:").append(packageName).toString()
@@ -102,5 +114,5 @@ fun Context.uninstallAppExpand(packageName: String, action: () -> Unit) {
         ).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         })
-    }, action)
+    }.onFailure { action.invoke() }
 }

@@ -134,12 +134,7 @@ fun Long.milliseconds2StringExpand(format: SimpleDateFormat = DEFAULT_FORMAT): S
 
 @Version([VersionLog(Version.PEACHES)])
 fun String.string2MillisecondsExpand(format: SimpleDateFormat = DEFAULT_FORMAT): Long {
-    try {
-        return format.parse(this)?.time ?: -1
-    } catch (e: ParseException) {
-        e.printStackTrace()
-    }
-    return -1
+    return runCatching { format.parse(this)?.time ?: -1 }.getOrElse { -1 }
 }
 
 @Version([VersionLog(Version.PEACHES)])
@@ -199,14 +194,11 @@ fun Date.date2StringExpand(format: SimpleDateFormat = DEFAULT_FORMAT): String {
 
 @Version([VersionLog(Version.PEACHES)])
 fun Calendar.getWeekOfYearExpand(id: String = GMT_8): Int {
-    return try {
+    return runCatching {
         timeZone = TimeZone.getTimeZone(id)
         firstDayOfWeek = Calendar.MONDAY
         this[Calendar.WEEK_OF_YEAR]
-    } catch (e: Exception) {
-        e.printStackTrace()
-        0
-    }
+    }.getOrElse { 0 }
 }
 
 @Version([VersionLog(Version.PEACHES)])
@@ -223,13 +215,10 @@ fun Calendar.getCurMonthStrExpand(prefix: Boolean = true): String {
 
 @Version([VersionLog(Version.PEACHES)])
 fun Calendar.getCurMonthExpand(id: String = GMT_8): Int {
-    return try {
+    return runCatching {
         timeZone = TimeZone.getTimeZone(id)
         this[Calendar.MONTH] + 1
-    } catch (e: java.lang.Exception) {
-        e.printStackTrace()
-        0
-    }
+    }.getOrElse { 0 }
 }
 
 @Version([VersionLog(Version.PEACHES)])
@@ -285,14 +274,11 @@ fun String.getDistanceOfTwoMonthExpand(target: String): Int {
 fun String.getDayByDiffExpand(diff: Int): String {
     val calendar: Calendar = Calendar.getInstance()
     val format: SimpleDateFormat = EN_YYYY_MM_DD_FORMAT
-    return try {
+    return runCatching {
         format.parse(this)?.let { calendar.time = it }
         calendar[Calendar.DAY_OF_YEAR] = calendar[Calendar.DAY_OF_YEAR] + diff
         format.format(calendar.time)
-    } catch (e: ParseException) {
-        e.printStackTrace()
-        ""
-    }
+    }.getOrElse { "" }
 }
 
 @Version([VersionLog(Version.PEACHES)])

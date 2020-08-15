@@ -70,9 +70,10 @@ val Context.isCameraExpand: Boolean
 @Version([VersionLog(Version.BANANA), VersionLog(Version.CHERRY)])
 val Context.statusBarHeightExpand: Int
     get() {
-        val resourceId: Int = resources.getIdentifier("status_bar_height", "dimen", "android")
-        val height: Int = resources.getDimensionPixelSize(resourceId)
-        return if (height > 0) height else 0
+        return runCatching {
+            val resourceId: Int = resources.getIdentifier("status_bar_height", "dimen", "android")
+            resources.getDimensionPixelSize(resourceId)
+        }.getOrNull() ?: 0
     }
 
 @JvmName("getAppIcon")
@@ -292,21 +293,21 @@ fun Context.insertVideoUriExpand(
 
 @JvmName("openVideo")
 @Version([VersionLog(Version.BANANA)])
-fun Context.openVideoExpand(uri: Uri, error: () -> Unit): Unit = try {
-    val video = Intent(Intent.ACTION_VIEW)
-    video.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-    video.setDataAndType(uri, "video/*")
-    startActivity(video)
-} catch (e: Exception) {
-    error.invoke()
+fun Context.openVideoExpand(uri: Uri, error: () -> Unit) {
+    runCatching {
+        val video = Intent(Intent.ACTION_VIEW)
+        video.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        video.setDataAndType(uri, "video/*")
+        startActivity(video)
+    }.onFailure { error.invoke() }
 }
 
 @JvmName("openAppStore")
 @Version([VersionLog(Version.BANANA), VersionLog(Version.CHERRY)])
-fun Context.openAppStoreExpand(packageName: String, error: () -> Unit): Unit = try {
-    val market = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
-    market.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-    startActivity(market)
-} catch (ignored: Exception) {
-    error.invoke()
+fun Context.openAppStoreExpand(packageName: String, error: () -> Unit) {
+    runCatching {
+        val market = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
+        market.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(market)
+    }.onFailure { error.invoke() }
 }
