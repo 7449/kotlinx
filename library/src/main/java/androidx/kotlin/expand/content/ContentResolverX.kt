@@ -44,7 +44,7 @@ fun ContentResolver.queryIdExpand(uri: Uri): Long {
         id = split[split.size - 1].toLong()
     }.onFailure {
         queryExpand(uri, MediaStore.Files.FileColumns._ID).use {
-            val cursor = it ?: return@use -1L
+            val cursor = it ?: return@use
             while (cursor.moveToNext()) {
                 id = cursor.getLong(cursor.getColumnIndex(MediaStore.Files.FileColumns._ID))
             }

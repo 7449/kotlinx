@@ -31,5 +31,8 @@ annotation class Version(val targetVersion: Array<VersionLog>) {
 
         /** implementation "com.ydevelop:kotlinx:0.0.6" */
         const val CHERRY: Int = 6
+
+        /** implementation "com.ydevelop:kotlinx:0.0.7" */
+        const val GRAPE: Int = 7
     }
 }

@@ -366,144 +366,150 @@ fun Bundle?.getCharSequenceArrayOrDefault(
 //ifNone
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getOrDefault(key: String, ifNone: () -> Any): Any =
-    this?.get(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getBooleanOrDefault(key: String, ifNone: () -> Boolean): Boolean =
-    this?.getBoolean(key, ifNone.invoke()) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getByteOrDefault(key: String, ifNone: () -> Byte): Byte =
-    this?.getByte(key, ifNone.invoke()) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getCharOrDefault(key: String, ifNone: () -> Char): Char =
-    this?.getChar(key, ifNone.invoke()) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getShortOrDefault(key: String, ifNone: () -> Short): Short =
-    this?.getShort(key, ifNone.invoke()) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getIntOrDefault(key: String, ifNone: () -> Int): Int =
-    this?.getInt(key, ifNone.invoke()) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getLongOrDefault(key: String, ifNone: () -> Long): Long =
-    this?.getLong(key, ifNone.invoke()) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getFloatOrDefault(key: String, ifNone: () -> Float): Float =
-    this?.getFloat(key, ifNone.invoke()) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getDoubleOrDefault(key: String, ifNone: () -> Double): Double =
-    this?.getDouble(key, ifNone.invoke()) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getStringOrDefault(key: String, ifNone: () -> String): String =
-    this?.getString(key, ifNone.invoke()) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getCharSequenceOrDefault(key: String, ifNone: () -> CharSequence): CharSequence =
-    this?.getCharSequence(key, ifNone.invoke()) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun <T : Parcelable> Bundle?.getParcelableOrDefault(
     key: String,
     ifNone: () -> T
-): T = this?.getParcelable(key) ?: ifNone.invoke()
+): T = getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun <T : Parcelable> Bundle?.getParcelableArrayOrDefault(
     key: String,
     ifNone: () -> Array<T>
-): Array<T> = this?.getParcelableArray(key) as? Array<T> ?: ifNone.invoke()
+): Array<T> = getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun <T : Parcelable> Bundle?.getParcelableArrayListOrDefault(
     key: String,
     ifNone: () -> ArrayList<T>
-): ArrayList<T> = this?.getParcelableArrayList(key) ?: ifNone.invoke()
+): ArrayList<T> = getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun <T : Parcelable> Bundle?.getSparseParcelableArrayOrDefault(
     key: String,
     ifNone: () -> SparseArray<T>
-): SparseArray<T> = this?.getSparseParcelableArray(key) ?: ifNone.invoke()
+): SparseArray<T> = getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getBundleOrDefault(key: String, ifNone: () -> Bundle): Bundle =
-    this?.getBundle(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getSizeOrDefault(key: String, ifNone: () -> Size): Size =
-    this?.getSize(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getSizeFOrDefault(key: String, ifNone: () -> SizeF): SizeF =
-    this?.getSizeF(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getIntArrayListOrDefault(key: String, ifNone: () -> ArrayList<Int>): ArrayList<Int> =
-    this?.getIntegerArrayList(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getStringArrayListOrDefault(
     key: String,
     ifNone: () -> ArrayList<String>
-): ArrayList<String> = this?.getStringArrayList(key) ?: ifNone.invoke()
+): ArrayList<String> =
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getCharSequenceArrayListOrDefault(
     key: String,
     ifNone: () -> ArrayList<CharSequence>
-): ArrayList<CharSequence> = this?.getCharSequenceArrayList(key) ?: ifNone.invoke()
+): ArrayList<CharSequence> =
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getSerializableOrDefault(key: String, ifNone: () -> Serializable): Serializable =
-    this?.getSerializable(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getBooleanArrayOrDefault(key: String, ifNone: () -> BooleanArray): BooleanArray =
-    this?.getBooleanArray(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getByteArrayOrDefault(key: String, ifNone: () -> ByteArray): ByteArray =
-    this?.getByteArray(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getShortArrayOrDefault(key: String, ifNone: () -> ShortArray): ShortArray =
-    this?.getShortArray(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getCharArrayOrDefault(key: String, ifNone: () -> CharArray): CharArray =
-    this?.getCharArray(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getIntArrayOrDefault(key: String, ifNone: () -> IntArray): IntArray =
-    this?.getIntArray(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getLongArrayOrDefault(key: String, ifNone: () -> LongArray): LongArray =
-    this?.getLongArray(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getFloatArrayOrDefault(key: String, ifNone: () -> FloatArray): FloatArray =
-    this?.getFloatArray(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getDoubleArrayOrDefault(key: String, ifNone: () -> DoubleArray): DoubleArray =
-    this?.getDoubleArray(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getStringArrayOrDefault(key: String, ifNone: () -> Array<String>): Array<String> =
-    this?.getStringArray(key) ?: ifNone.invoke()
+    getObjExpand(key, ifNone)
 
 @Version([VersionLog(Version.BANANA)])
 fun Bundle?.getCharSequenceArrayOrDefault(
     key: String,
     ifNone: () -> Array<CharSequence>
-): Array<CharSequence> = this?.getCharSequenceArray(key) ?: ifNone.invoke()
+): Array<CharSequence> = getObjExpand(key, ifNone)
+
+@Version([VersionLog((Version.GRAPE))])
+fun <T> Bundle?.getObjExpand(key: String, action: Action<T>): T =
+    this?.get(key) as? T ?: action.invoke()

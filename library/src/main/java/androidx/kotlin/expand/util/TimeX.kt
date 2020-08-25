@@ -237,7 +237,7 @@ fun Calendar.getHourExpand(id: String = GMT_8): Int {
 }
 
 @Version([VersionLog(Version.PEACHES)])
-fun Long.getHourExpand(id: String = GMT_8): Int {
+fun Long.getHourExpand(): Int {
     val c: Calendar = Calendar.getInstance()
     c.timeInMillis = this
     return getHourExpand()
@@ -259,7 +259,7 @@ fun Calendar.getCurMonthLengthExpand(): Int {
 
 @Throws(ParseException::class)
 @Version([VersionLog(Version.PEACHES)])
-fun String.getDistanceOfTwoMonthExpand(target: String): Int {
+fun String.getDistanceOfTwoMonthExpand(): Int {
     val sdf = EN_YYYY_MM_FORMAT
     val bef = Calendar.getInstance()
     val aft = Calendar.getInstance()
