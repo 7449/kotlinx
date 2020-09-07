@@ -14,7 +14,7 @@ import androidx.kotlin.expand.annotation.VersionLog
 import androidx.kotlin.expand.view.squareExpand
 
 @JvmName("hideStatusBar")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun Activity.hideStatusBarExpand() {
     val attrs = window.attributes
     attrs.flags = attrs.flags or WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -22,7 +22,7 @@ fun Activity.hideStatusBarExpand() {
 }
 
 @JvmName("showStatusBar")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun Activity.showStatusBarExpand() {
     val attrs = window.attributes
     attrs.flags = attrs.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -30,36 +30,36 @@ fun Activity.showStatusBarExpand() {
 }
 
 @JvmName("square")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun Activity.squareExpand(count: Int): Int =
     window.squareExpand(count)
 
 @JvmName("fragmentList")
-@Version([VersionLog(Version.PINEAPPLE)])
+@Version(VersionLog(Version.NONE))
 fun AppCompatActivity.fragmentsExpand(): MutableList<Fragment> =
     supportFragmentManager.fragments
 
 @JvmName("findFragmentByTag")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun AppCompatActivity.findFragmentByTagExpand(tag: String, of: (fragment: Fragment?) -> Unit) {
     of.invoke(supportFragmentManager.findFragmentByTag(tag))
 }
 
 @JvmName("findFragmentById")
-@Version([VersionLog(Version.PINEAPPLE)])
+@Version(VersionLog(Version.NONE))
 fun AppCompatActivity.findFragmentByIdExpand(@IdRes id: Int, of: (fragment: Fragment?) -> Unit) {
     of.invoke(supportFragmentManager.findFragmentById(id))
 }
 
 @JvmName("findFragmentByTag")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun <T : Fragment> AppCompatActivity.findFragmentByTagExpand(
     tag: String,
     ifNone: (String) -> T
 ): T = supportFragmentManager.findFragmentByTag(tag) as T? ?: ifNone(tag)
 
 @JvmName("runOnCommit")
-@Version([VersionLog(Version.PINEAPPLE)])
+@Version(VersionLog(Version.NONE))
 fun AppCompatActivity.showRunOnCommitExpand(
     fragment: Fragment,
     runnable: Runnable
@@ -67,21 +67,21 @@ fun AppCompatActivity.showRunOnCommitExpand(
     supportFragmentManager.beginTransaction().show(fragment).runOnCommit(runnable)
 
 @JvmName("showFragment")
-@Version([VersionLog(Version.BANANA), VersionLog(Version.PINEAPPLE)])
+@Version(VersionLog(Version.NONE))
 fun AppCompatActivity.showFragmentExpand(
     fragmentType: FragmentType = FragmentType.COMMIT_ALLOWING_STATE_LOSS,
     fragment: Fragment
 ) = supportFragmentManager.beginTransaction().show(fragment).commitExpand(fragmentType)
 
 @JvmName("hideFragment")
-@Version([VersionLog(Version.BANANA), VersionLog(Version.PINEAPPLE)])
+@Version(VersionLog(Version.NONE))
 fun AppCompatActivity.hideFragmentExpand(
     fragmentType: FragmentType = FragmentType.COMMIT_ALLOWING_STATE_LOSS,
     fragment: Fragment
 ) = supportFragmentManager.beginTransaction().hide(fragment).commitExpand(fragmentType)
 
 @JvmName("addFragment")
-@Version([VersionLog(Version.BANANA), VersionLog(Version.PINEAPPLE)])
+@Version(VersionLog(Version.NONE))
 fun AppCompatActivity.addFragmentExpand(
     id: Int,
     fragmentType: FragmentType = FragmentType.COMMIT_ALLOWING_STATE_LOSS,
@@ -90,7 +90,7 @@ fun AppCompatActivity.addFragmentExpand(
     .commitExpand(fragmentType)
 
 @JvmName("replaceFragment")
-@Version([VersionLog(Version.BANANA), VersionLog(Version.PINEAPPLE)])
+@Version(VersionLog(Version.NONE))
 fun AppCompatActivity.replaceFragmentExpand(
     id: Int,
     fragmentType: FragmentType = FragmentType.COMMIT_ALLOWING_STATE_LOSS,

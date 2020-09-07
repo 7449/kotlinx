@@ -13,7 +13,7 @@ import kotlin.experimental.and
 internal const val MD5 = "MD5"
 
 @JvmName("encodeMD5")
-@Version([VersionLog(Version.PEACHES)])
+@Version(VersionLog(Version.NONE))
 fun String.encodeMD5Expand(): String {
     return runCatching {
         val digest: MessageDigest = MessageDigest.getInstance(MD5)
@@ -23,7 +23,7 @@ fun String.encodeMD5Expand(): String {
 }
 
 @JvmName("toHexString")
-@Version([VersionLog(Version.PEACHES)])
+@Version(VersionLog(Version.NONE))
 fun ByteArray.toHexStringExpand(): String {
     val expectedStringLen: Int = size * 2
     val sb = StringBuilder(expectedStringLen)
@@ -38,7 +38,7 @@ fun ByteArray.toHexStringExpand(): String {
 }
 
 @JvmName("encodeMD5")
-@Version([VersionLog(Version.PEACHES)])
+@Version(VersionLog(Version.NONE))
 fun File.encodeMD5Expand(): String? {
     val digest: MessageDigest?
     val buffer = ByteArray(1024)

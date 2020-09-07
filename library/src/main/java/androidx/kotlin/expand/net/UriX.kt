@@ -7,21 +7,21 @@ import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
 
 @JvmName("getUriOrEmpty")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun Uri?.orEmptyExpand(): Uri = this ?: Uri.EMPTY
 
 @JvmName("getQueryParameter")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun String.getQueryParameterExpand(key: String, defaultValue: String = ""): String =
     Uri.parse(this).getQueryParameter(key) ?: defaultValue
 
 @JvmName("getBooleanQueryParameter")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun String.getBooleanQueryParameterExpand(key: String, defaultValue: Boolean = false): Boolean =
     Uri.parse(this).getBooleanQueryParameter(key, defaultValue)
 
 @JvmName("getListQueryParameter")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun String.getListQueryParameterExpand(vararg key: String): ArrayList<String> {
     val parse = Uri.parse(this)
     val list = ArrayList<String>()

@@ -13,27 +13,27 @@ import androidx.kotlin.expand.annotation.VersionLog
 import androidx.kotlin.expand.content.colorExpand
 
 @JvmName("setTextColor")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun TextView.colorExpend(@ColorRes id: Int): TextView = apply {
     setTextColor(context.colorExpand(id))
 }
 
 @JvmName("addOnAfterTextChanged")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun TextView.doOnAfterTextChangedExpend(action: (editable: Editable) -> Unit): TextView =
     addTextChangedListenerExpand(afterTextChanged = action)
 
 @JvmName("addOnBeforeTextChanged")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun TextView.doOnBeforeTextChangedExpend(action: (charSequence: CharSequence, start: Int, count: Int, after: Int) -> Unit): TextView =
     addTextChangedListenerExpand(beforeTextChanged = action)
 
 @JvmName("addOnTextChanged")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun TextView.doOnTextChangedExpend(action: (charSequence: CharSequence, start: Int, before: Int, count: Int) -> Unit): TextView =
     addTextChangedListenerExpand(onTextChanged = action)
 
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun TextView.addTextChangedListenerExpand(
     afterTextChanged: (editable: Editable) -> Unit = { _: Editable -> },
     beforeTextChanged: (charSequence: CharSequence, start: Int, count: Int, after: Int) -> Unit = { _: CharSequence, _: Int, _: Int, _: Int -> },

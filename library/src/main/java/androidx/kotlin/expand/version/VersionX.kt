@@ -7,41 +7,41 @@ import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
 
 @JvmName("isMinVersion")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun Int.minVersionExpand(): Boolean =
     Build.VERSION.SDK_INT >= this
 
 @JvmName("isMaxVersion")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun Int.maxVersionExpand(): Boolean =
     Build.VERSION.SDK_INT <= this
 
 @JvmName("getCurrentVersion")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun Int.currentVersionExpand(): Boolean =
     Build.VERSION.SDK_INT == this
 
 @JvmName("isLollipop")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun hasLExpand(): Boolean =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
 
 @JvmName("isM")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun hasMExpand(): Boolean =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
 
 @JvmName("isN")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun hasNExpand(): Boolean =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 
 @JvmName("isQ")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun hasQExpand(): Boolean =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 class CheckVersion(private val version: String) : Comparable<CheckVersion> {
 
     init {

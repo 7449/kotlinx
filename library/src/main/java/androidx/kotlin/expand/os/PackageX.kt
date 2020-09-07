@@ -13,25 +13,25 @@ import androidx.annotation.RequiresApi
 import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
 
-@Version([VersionLog(Version.PEACHES)])
+@Version(VersionLog(Version.NONE))
 val Context.isApkDebuggableExpand: Boolean
     get() = isApkDebugAbleExpand(packageName)
 
-@Version([VersionLog(Version.PEACHES)])
+@Version(VersionLog(Version.NONE))
 val Context.versionNameExpand: String
     get() = appVersionNameExpand(packageName)
 
-@Version([VersionLog(Version.PEACHES)])
+@Version(VersionLog(Version.NONE))
 val Context.versionCodeIntExpand: Int
     get() = appVersionCodeIntExpand(packageName)
 
-@Version([VersionLog(Version.PEACHES)])
+@Version(VersionLog(Version.NONE))
 val Context.versionCodeLongExpand: Long
     @RequiresApi(Build.VERSION_CODES.P)
     get() = appVersionCodeLongExpand(packageName)
 
 @JvmName("appVersionName")
-@Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
+@Version(VersionLog(Version.NONE))
 fun Context.appVersionNameExpand(packageName: String): String {
     return runCatching {
         packageManager.getPackageInfo(
@@ -42,7 +42,7 @@ fun Context.appVersionNameExpand(packageName: String): String {
 }
 
 @JvmName("appVersionCodeInt")
-@Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
+@Version(VersionLog(Version.NONE))
 fun Context.appVersionCodeIntExpand(packageName: String): Int {
     return runCatching {
         packageManager.getPackageInfo(
@@ -53,7 +53,7 @@ fun Context.appVersionCodeIntExpand(packageName: String): Int {
 }
 
 @JvmName("appName")
-@Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
+@Version(VersionLog(Version.NONE))
 fun Context.appNameExpand(packageName: String): String {
     return runCatching {
         packageManager.getApplicationInfo(packageName, 0).loadLabel(packageManager).toString()
@@ -61,7 +61,7 @@ fun Context.appNameExpand(packageName: String): String {
 }
 
 @JvmName("isApkDebugAble")
-@Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
+@Version(VersionLog(Version.NONE))
 fun Context.isApkDebugAbleExpand(packageName: String): Boolean {
     return runCatching {
         packageManager.getPackageInfo(
@@ -72,7 +72,7 @@ fun Context.isApkDebugAbleExpand(packageName: String): Boolean {
 }
 
 @JvmName("appVersionCodeLong")
-@Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
+@Version(VersionLog(Version.NONE))
 @RequiresApi(Build.VERSION_CODES.P)
 fun Context.appVersionCodeLongExpand(packageName: String): Long {
     return runCatching {
@@ -83,17 +83,17 @@ fun Context.appVersionCodeLongExpand(packageName: String): Long {
     }.getOrElse { -1 }
 }
 
-@Version([VersionLog(Version.PEACHES)])
+@Version(VersionLog(Version.NONE))
 val Context.installedPackageInfoExpand: List<PackageInfo>
     get() = packageManager.getInstalledPackages(0)
 
 @JvmName("isInstalled")
-@Version([VersionLog(Version.PEACHES)])
+@Version(VersionLog(Version.NONE))
 fun Context.isInstalledExpand(packageName: String): Boolean =
     installedPackageInfoExpand.find { packageName.equals(it.packageName, true) } != null
 
 @JvmName("isSystemApp")
-@Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
+@Version(VersionLog(Version.NONE))
 fun Context.isSystemAppExpand(packageName: String): Boolean {
     return runCatching {
         packageManager.getApplicationInfo(
@@ -104,7 +104,7 @@ fun Context.isSystemAppExpand(packageName: String): Boolean {
 }
 
 @JvmName("uninstallApp")
-@Version([VersionLog(Version.PEACHES), VersionLog(Version.CHERRY)])
+@Version(VersionLog(Version.NONE))
 fun Context.uninstallAppExpand(packageName: String, action: () -> Unit) {
     runCatching {
         startActivity(Intent(

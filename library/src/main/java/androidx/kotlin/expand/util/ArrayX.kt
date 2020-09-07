@@ -12,7 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
 
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun <T> sparseArrayOf(vararg pairs: Pair<Int, T>): SparseArray<T> =
     sparseArrayOf<T>().apply {
         for ((key, value) in pairs) {
@@ -20,7 +20,7 @@ fun <T> sparseArrayOf(vararg pairs: Pair<Int, T>): SparseArray<T> =
         }
     }
 
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun sparseBooleanArrayOf(vararg pairs: Pair<Int, Boolean>): SparseBooleanArray =
     sparseBooleanArrayOf().apply {
         for ((key, value) in pairs) {
@@ -28,7 +28,7 @@ fun sparseBooleanArrayOf(vararg pairs: Pair<Int, Boolean>): SparseBooleanArray =
         }
     }
 
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun sparseIntArrayOf(vararg pairs: Pair<Int, Int>): SparseIntArray =
     sparseIntArrayOf().apply {
         for ((key, value) in pairs) {
@@ -37,7 +37,7 @@ fun sparseIntArrayOf(vararg pairs: Pair<Int, Int>): SparseIntArray =
     }
 
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun sparseLongArrayOf(vararg pairs: Pair<Int, Long>): SparseLongArray =
     sparseLongArrayOf().apply {
         for ((key, value) in pairs) {
@@ -46,18 +46,18 @@ fun sparseLongArrayOf(vararg pairs: Pair<Int, Long>): SparseLongArray =
     }
 
 @JvmName("getEmptySparseArray")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 inline fun <T> sparseArrayOf(): SparseArray<T> = SparseArray()
 
 @JvmName("getEmptySparseBooleanArray")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 inline fun sparseBooleanArrayOf(): SparseBooleanArray = SparseBooleanArray()
 
 @JvmName("getEmptySparseIntArray")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 inline fun sparseIntArrayOf(): SparseIntArray = SparseIntArray()
 
 @JvmName("getEmptySparseLongArray")
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 inline fun sparseLongArrayOf(): SparseLongArray = SparseLongArray()

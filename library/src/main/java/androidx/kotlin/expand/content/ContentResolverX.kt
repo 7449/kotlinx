@@ -10,22 +10,22 @@ import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
 
 @JvmName("query")
-@Version([VersionLog(Version.BANANA), VersionLog(Version.CHERRY)])
+@Version(VersionLog(Version.NONE))
 fun ContentResolver.queryExpand(uri: Uri, vararg name: String): Cursor? =
     query(uri, name, null, null, null)
 
 @JvmName("moveToNextToId")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun ContentResolver.moveToNextToIdExpand(uri: Uri): Boolean =
     moveToNextExpand(uri, MediaStore.Files.FileColumns._ID)
 
 @JvmName("moveToNext")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun ContentResolver.moveToNextExpand(uri: Uri, name: String): Boolean =
     queryExpand(uri, name).use { it?.moveToNext() ?: false }
 
 @JvmName("queryData")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun ContentResolver.queryDataExpand(uri: Uri): String? =
     queryExpand(uri, MediaStore.MediaColumns.DATA).use {
         val cursor = it ?: return null
@@ -36,7 +36,7 @@ fun ContentResolver.queryDataExpand(uri: Uri): String? =
     }
 
 @JvmName("queryId")
-@Version([VersionLog(Version.BANANA)])
+@Version(VersionLog(Version.NONE))
 fun ContentResolver.queryIdExpand(uri: Uri): Long {
     val split = uri.toString().split("/")
     var id = -1L
