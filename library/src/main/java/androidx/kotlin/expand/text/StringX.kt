@@ -97,3 +97,11 @@ val String.intExpand: Int
 @Version(VersionLog(Version.NONE))
 fun String.toastExpand(context: Context): Unit =
     Toast.makeText(context, this, Toast.LENGTH_SHORT).show()
+
+@JvmName("safeToast")
+@Version(VersionLog(Version.NONE))
+fun String?.safeToastExpand(context: Context?) {
+    if (!isNullOrEmpty()) {
+        context?.let { toastExpand(it) }
+    }
+}

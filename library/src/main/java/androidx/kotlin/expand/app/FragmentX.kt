@@ -18,10 +18,15 @@ import androidx.kotlin.expand.graphics.drawable.minimumWidthAndHeightDrawableExp
 import java.io.File
 import java.util.concurrent.Executor
 
+@JvmName("requireRunOnUiThread")
+@Version(VersionLog(Version.NONE))
+fun Fragment.requireRunOnUiThreadExpand(action: () -> Unit): Unit =
+    requireActivity().runOnUiThread { action.invoke() }
+
 @JvmName("runOnUiThread")
 @Version(VersionLog(Version.NONE))
-fun Fragment.runOnUiThreadExpand(action: () -> Unit): Unit =
-    requireActivity().runOnUiThread { action.invoke() }
+fun Fragment.runOnUiThreadExpand(action: () -> Unit): Unit? =
+    activity?.runOnUiThread { action.invoke() }
 
 @JvmName("toast")
 @Version(VersionLog(Version.NONE))

@@ -21,6 +21,10 @@ val Context.isApkDebuggableExpand: Boolean
 val Context.versionNameExpand: String
     get() = appVersionNameExpand(packageName)
 
+@Deprecated(
+    "Use getLongVersionCode() instead, which includes both this and the additional",
+    replaceWith = ReplaceWith("versionCodeLongExpand")
+)
 @Version(VersionLog(Version.NONE))
 val Context.versionCodeIntExpand: Int
     get() = appVersionCodeIntExpand(packageName)
@@ -41,6 +45,10 @@ fun Context.appVersionNameExpand(packageName: String): String {
     }.getOrElse { "" }
 }
 
+@Deprecated(
+    "Use getLongVersionCode() instead, which includes both this and the additional",
+    replaceWith = ReplaceWith("appVersionCodeLongExpand(packageName)")
+)
 @JvmName("appVersionCodeInt")
 @Version(VersionLog(Version.NONE))
 fun Context.appVersionCodeIntExpand(packageName: String): Int {

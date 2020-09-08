@@ -7,9 +7,7 @@ import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.kotlin.expand.content.queryDataExpand
-import androidx.kotlin.expand.os.getIntOrDefault
-import androidx.kotlin.expand.os.getStringOrDefault
-import androidx.kotlin.expand.os.isApkDebugAbleExpand
+import androidx.kotlin.expand.os.*
 import androidx.kotlin.expand.text.checkPwdRegexExpand
 import androidx.kotlin.expand.util.encodeMD5Expand
 import androidx.kotlin.expand.util.toIntExpand
@@ -34,6 +32,9 @@ class MainActivity : AppCompatActivity() {
 
         Log.i("=====", bundle.getStringOrDefault("string") { "null" })
         Log.i("=====", bundle.getIntOrDefault("int") { -1 }.toString())
+
+        appVersionCodeIntExpand(packageName)
+        versionCodeIntExpand
 
         TestJava.test(this)
         Log.i("=====", "10398830@sss".checkPwdRegexExpand.toString())
