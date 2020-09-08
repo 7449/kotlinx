@@ -4,6 +4,8 @@
 package androidx.kotlin.expand.app
 
 import android.app.Activity
+import android.media.MediaScannerConnection
+import android.net.Uri
 import android.view.WindowManager
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
+import androidx.kotlin.expand.net.filePathExpand
 import androidx.kotlin.expand.view.squareExpand
 
 @JvmName("hideStatusBar")
@@ -33,6 +36,23 @@ fun Activity.showStatusBarExpand() {
 @Version(VersionLog(Version.NONE))
 fun Activity.squareExpand(count: Int): Int =
     window.squareExpand(count)
+
+@JvmName("scanFile")
+@Version(VersionLog(Version.NONE))
+fun Activity.scanFileExpand(uri: Uri, action: (uri: Uri) -> Unit) {
+    scanFileExpand(uri.filePathExpand(this), action)
+}
+
+@JvmName("scanFile")
+@Version(VersionLog(Version.NONE))
+fun Activity.scanFileExpand(path: String, action: (uri: Uri) -> Unit) {
+    MediaScannerConnection.scanFile(this, arrayOf(path), null) { _: String?, uri: Uri? ->
+        runOnUiThread {
+            uri ?: return@runOnUiThread
+            action.invoke(uri)
+        }
+    }
+}
 
 @JvmName("fragmentList")
 @Version(VersionLog(Version.NONE))
