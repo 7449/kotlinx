@@ -35,7 +35,7 @@ fun Fragment.toastExpand(any: Any): Unit? =
 
 @Version(VersionLog(Version.NONE))
 val Fragment.dataDirCompat: File?
-    get() = requireContext().dataDirCompat
+    get() = context?.dataDirCompat
 
 @Version(VersionLog(Version.NONE))
 val Fragment.obbDirsCompat: Array<File>
@@ -47,7 +47,7 @@ val Fragment.externalCacheDirsCompat: Array<File>
 
 @Version(VersionLog(Version.NONE))
 val Fragment.noBackupFilesDirCompat: File?
-    get() = requireContext().noBackupFilesDirCompat
+    get() = context?.noBackupFilesDirCompat
 
 @Version(VersionLog(Version.NONE))
 val Fragment.codeCacheDirCompat: File
@@ -73,12 +73,12 @@ fun Fragment.externalFilesDirsExpand(type: String?): Array<File> =
 @JvmName("getDrawable")
 @Version(VersionLog(Version.NONE))
 fun Fragment.drawableExpand(@DrawableRes id: Int): Drawable? =
-    requireContext().drawableExpand(id)
+    context?.drawableExpand(id)
 
 @JvmName("getColorStateList")
 @Version(VersionLog(Version.NONE))
 fun Fragment.colorStateListExpand(@ColorRes id: Int): ColorStateList? =
-    requireContext().colorStateListExpand(id)
+    context?.colorStateListExpand(id)
 
 @JvmName("getColor")
 @Version(VersionLog(Version.NONE))
@@ -119,7 +119,7 @@ fun Fragment.stringExpand(@StringRes id: Int): String =
 @JvmName("getString")
 @Version(VersionLog(Version.NONE))
 fun Fragment.stringExpand(@StringRes id: Int, vararg formatArgs: Any): String =
-    requireContext().stringExpand(id, formatArgs)
+    requireContext().stringExpand(id, *formatArgs)
 
 @JvmName("getTextArray")
 @Version(VersionLog(Version.NONE))
@@ -162,7 +162,7 @@ fun Fragment.quantityStringExpand(
     @PluralsRes id: Int,
     quantity: Int,
     vararg formatArgs: Any
-): CharSequence = requireContext().quantityStringExpand(id, quantity, formatArgs)
+): CharSequence = requireContext().quantityStringExpand(id, quantity, *formatArgs)
 
 @JvmName("getQuantityString")
 @Version(VersionLog(Version.NONE))
@@ -178,17 +178,17 @@ fun Fragment.fontExpand(@FontRes id: Int): Typeface =
 @JvmName("insertImageUri")
 @Version(VersionLog(Version.NONE))
 fun Fragment.insertImageUriExpand(contentValues: ContentValues): Uri? =
-    requireContext().insertImageUriExpand(contentValues)
+    context?.insertImageUriExpand(contentValues)
 
 @JvmName("insertVideoUri")
 @Version(VersionLog(Version.NONE))
 fun Fragment.insertVideoUriExpand(contentValues: ContentValues): Uri? =
-    requireContext().insertVideoUriExpand(contentValues)
+    context?.insertVideoUriExpand(contentValues)
 
 @JvmName("appIntent")
 @Version(VersionLog(Version.NONE))
 fun Fragment.appIntentExpand(packageName: String): Intent? =
-    requireContext().packageManager.getLaunchIntentForPackage(packageName)
+    context?.packageManager?.getLaunchIntentForPackage(packageName)
 
 @JvmName("getMinimumDrawable")
 @Version(VersionLog(Version.NONE))
@@ -213,7 +213,7 @@ fun Fragment.findIdByUriExpand(uri: Uri): Long =
 @JvmName("findPathByUri")
 @Version(VersionLog(Version.NONE))
 fun Fragment.findPathByUriExpand(uri: Uri): String? =
-    requireContext().findPathByUriExpand(uri)
+    context?.findPathByUriExpand(uri)
 
 @JvmName("getJson")
 @Version(VersionLog(Version.NONE))

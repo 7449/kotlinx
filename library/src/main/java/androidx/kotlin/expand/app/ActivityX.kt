@@ -6,7 +6,6 @@ package androidx.kotlin.expand.app
 import android.app.Activity
 import android.media.MediaScannerConnection
 import android.net.Uri
-import android.view.WindowManager
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -15,22 +14,6 @@ import androidx.kotlin.expand.annotation.Version
 import androidx.kotlin.expand.annotation.VersionLog
 import androidx.kotlin.expand.net.filePathExpand
 import androidx.kotlin.expand.view.squareExpand
-
-@JvmName("hideStatusBar")
-@Version(VersionLog(Version.NONE))
-fun Activity.hideStatusBarExpand() {
-    val attrs = window.attributes
-    attrs.flags = attrs.flags or WindowManager.LayoutParams.FLAG_FULLSCREEN
-    window.attributes = attrs
-}
-
-@JvmName("showStatusBar")
-@Version(VersionLog(Version.NONE))
-fun Activity.showStatusBarExpand() {
-    val attrs = window.attributes
-    attrs.flags = attrs.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN
-    window.attributes = attrs
-}
 
 @JvmName("square")
 @Version(VersionLog(Version.NONE))

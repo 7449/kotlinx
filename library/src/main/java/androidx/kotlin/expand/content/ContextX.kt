@@ -140,7 +140,7 @@ fun Context.stringExpand(@StringRes id: Int): String =
 @JvmName("getString")
 @Version(VersionLog(Version.NONE))
 fun Context.stringExpand(@StringRes id: Int, vararg formatArgs: Any): String =
-    this.resources.getString(id, formatArgs)
+    this.resources.getString(id, *formatArgs)
 
 @JvmName("getTextArray")
 @Version(VersionLog(Version.NONE))
@@ -183,7 +183,7 @@ fun Context.quantityStringExpand(
     @PluralsRes id: Int,
     quantity: Int,
     vararg formatArgs: Any
-): CharSequence = this.resources.getQuantityString(id, quantity, formatArgs)
+): CharSequence = this.resources.getQuantityString(id, quantity, *formatArgs)
 
 @JvmName("getQuantityString")
 @Version(VersionLog(Version.NONE))
