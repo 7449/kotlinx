@@ -1,0 +1,19 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: "com.github.dcendents.android-maven"
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        kotlinOptions.freeCompilerArgs += ['-module-name', "com.github.7449.kotlinx.core"]
+    }
+}
+dependencies {
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compileOnly "androidx.appcompat:appcompat:$appcompatVersion"
+}

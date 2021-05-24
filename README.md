@@ -1,3 +1,9 @@
 # kotlinx
+    
+    allprojects {
+        repositories {
+            maven { url 'https://jitpack.io' }
+        }
+    }
 
-    implementation 'com.ydevelop:kotlinx:0.0.7'
+    implementation 'com.github.7449.kotlinx:core:0.0.1'

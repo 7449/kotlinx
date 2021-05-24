@@ -14,7 +14,7 @@ package androidx.kotlin.expand.annotation
 @MustBeDocumented
 annotation class Version(@Suppress("unused") val targetVersion: VersionLog) {
     companion object {
-        /** implementation "com.ydevelop:kotlinx:lastVersion" */
+        /** implementation "com.github.7449.kotlinx:core:lastVersion" */
         const val NONE: Int = -1
     }
 }

@@ -1,4 +1,4 @@
 include(
     ":app",
-    ":library"
+    ":core"
 )
