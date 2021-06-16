@@ -5,8 +5,8 @@ package androidx.kotlin.expand.graphics
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
-import androidx.kotlin.expand.annotation.Version
-import androidx.kotlin.expand.annotation.VersionLog
+
+
 import java.io.ByteArrayOutputStream
 
 /**
@@ -15,7 +15,6 @@ import java.io.ByteArrayOutputStream
  * @return [0] 宽 [1]高
  */
 @JvmName("getImageWidthHeight")
-@Version(VersionLog(Version.NONE))
 fun String.imageWidthHeightExpand(): IntArray {
     val options = BitmapFactory.Options()
     options.inJustDecodeBounds = true
@@ -27,7 +26,6 @@ fun String.imageWidthHeightExpand(): IntArray {
  * 图片转 Base64 带头部
  */
 @JvmName("getBitmapToBase64HeaderPng")
-@Version(VersionLog(Version.NONE))
 fun String.bitmapToBase64HeaderPngExpand(quality: Int = 100): String {
     val bitmap = BitmapFactory.decodeFile(this)
     val byteArrayOutputStream = ByteArrayOutputStream()
@@ -42,7 +40,6 @@ fun String.bitmapToBase64HeaderPngExpand(quality: Int = 100): String {
  * 图片转 Base64
  */
 @JvmName("getBitmapToBase64")
-@Version(VersionLog(Version.NONE))
 fun String.bitmapToBase64Expand(quality: Int = 100): String {
     val bitmap = BitmapFactory.decodeFile(this)
     val byteArrayOutputStream = ByteArrayOutputStream()
@@ -54,7 +51,6 @@ fun String.bitmapToBase64Expand(quality: Int = 100): String {
  * 图片转 Base64 png
  */
 @JvmName("getBitmapToBase64HeaderPng")
-@Version(VersionLog(Version.NONE))
 fun Bitmap.bitmapToBase64HeaderPngExpand(quality: Int = 100): String {
     val byteArrayOutputStream = ByteArrayOutputStream()
     compress(Bitmap.CompressFormat.PNG, quality, byteArrayOutputStream)
@@ -68,7 +64,6 @@ fun Bitmap.bitmapToBase64HeaderPngExpand(quality: Int = 100): String {
  * 图片转 Base64
  */
 @JvmName("getBitmapToBase64")
-@Version(VersionLog(Version.NONE))
 fun Bitmap.bitmapToBase64Expand(quality: Int = 100): String {
     val byteArrayOutputStream = ByteArrayOutputStream()
     compress(Bitmap.CompressFormat.JPEG, quality, byteArrayOutputStream)

@@ -3,72 +3,42 @@
 package androidx.kotlin.expand.version
 
 import android.os.Build
-import androidx.kotlin.expand.annotation.Version
-import androidx.kotlin.expand.annotation.VersionLog
 
 @JvmName("isMinVersion")
-@Version(VersionLog(Version.NONE))
-fun Int.minVersionExpand(): Boolean =
-    Build.VERSION.SDK_INT >= this
+fun Int.minVersionExpand(): Boolean = Build.VERSION.SDK_INT >= this
 
 @JvmName("isMaxVersion")
-@Version(VersionLog(Version.NONE))
-fun Int.maxVersionExpand(): Boolean =
-    Build.VERSION.SDK_INT <= this
+fun Int.maxVersionExpand(): Boolean = Build.VERSION.SDK_INT <= this
 
-@JvmName("getCurrentVersion")
-@Version(VersionLog(Version.NONE))
-fun Int.currentVersionExpand(): Boolean =
-    Build.VERSION.SDK_INT == this
+@JvmName("isK")
+fun hasKExpand(): Boolean = Build.VERSION.SDK_INT >= 19
 
-@JvmName("isLollipop")
-@Version(VersionLog(Version.NONE))
-fun hasLExpand(): Boolean =
-    Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
+@JvmName("isL")
+fun hasLExpand(): Boolean = Build.VERSION.SDK_INT >= 21
+
+@JvmName("isL_Mr1")
+fun hasLMr1Expand(): Boolean = Build.VERSION.SDK_INT >= 22
 
 @JvmName("isM")
-@Version(VersionLog(Version.NONE))
-fun hasMExpand(): Boolean =
-    Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+fun hasMExpand(): Boolean = Build.VERSION.SDK_INT >= 23
 
 @JvmName("isN")
-@Version(VersionLog(Version.NONE))
-fun hasNExpand(): Boolean =
-    Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+fun hasNExpand(): Boolean = Build.VERSION.SDK_INT >= 24
+
+@JvmName("isN_Mr1")
+fun hasNMr1Expand(): Boolean = Build.VERSION.SDK_INT >= 25
+
+@JvmName("isO")
+fun hasOExpand(): Boolean = Build.VERSION.SDK_INT >= 26
+
+@JvmName("isO_Mr1")
+fun hasOMr1Expand(): Boolean = Build.VERSION.SDK_INT >= 27
+
+@JvmName("isP")
+fun hasPExpand(): Boolean = Build.VERSION.SDK_INT >= 28
 
 @JvmName("isQ")
-@Version(VersionLog(Version.NONE))
-fun hasQExpand(): Boolean =
-    Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+fun hasQExpand(): Boolean = Build.VERSION.SDK_INT >= 29
 
-@Version(VersionLog(Version.NONE))
-class CheckVersion(private val version: String) : Comparable<CheckVersion> {
-
-    init {
-        require(version.matches(Regex("[0-9]+(\\.[0-9]+)*"))) { "Invalid version format" }
-    }
-
-    override fun compareTo(other: CheckVersion): Int {
-        val thisParts = version.split("\\.").toTypedArray()
-        val thatParts = other.version.split("\\.").toTypedArray()
-        val length = thisParts.size.coerceAtLeast(thatParts.size)
-        for (i in 0 until length) {
-            val thisPart = if (i < thisParts.size) thisParts[i].toInt() else 0
-            val thatPart = if (i < thatParts.size) thatParts[i].toInt() else 0
-            if (thisPart < thatPart) return -1
-            if (thisPart > thatPart) return 1
-        }
-        return 0
-    }
-
-    override fun equals(other: Any?): Boolean {
-        return this === other || other != null
-                && this.javaClass == other.javaClass
-                && this.compareTo(other as CheckVersion) == 0
-    }
-
-    override fun hashCode(): Int {
-        return version.hashCode()
-    }
-
-}
+@JvmName("isR")
+fun hasRExpand(): Boolean = Build.VERSION.SDK_INT >= 30

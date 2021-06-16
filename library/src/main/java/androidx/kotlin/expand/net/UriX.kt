@@ -6,12 +6,11 @@ import android.content.ContentResolver
 import android.content.Context
 import android.net.Uri
 import android.util.Log
-import androidx.kotlin.expand.annotation.Version
-import androidx.kotlin.expand.annotation.VersionLog
+
+
 import androidx.kotlin.expand.content.findPathByUriExpand
 
 @JvmName("isFileExists")
-@Version(VersionLog(Version.NONE))
 fun Uri.isFileExistsExpand(context: Context): Boolean {
     return runCatching {
         context.contentResolver.openAssetFileDescriptor(this, "r")?.close()
@@ -19,7 +18,6 @@ fun Uri.isFileExistsExpand(context: Context): Boolean {
 }
 
 @JvmName("delete")
-@Version(VersionLog(Version.NONE))
 fun Uri.deleteExpand(context: Context) {
     runCatching {
         context.contentResolver.delete(this, null, null)
@@ -29,7 +27,6 @@ fun Uri.deleteExpand(context: Context) {
 }
 
 @JvmName("getFilePath")
-@Version(VersionLog(Version.NONE))
 fun Uri.filePathExpand(context: Context): String {
     return when (scheme) {
         ContentResolver.SCHEME_CONTENT -> context.findPathByUriExpand(this).orEmpty()
@@ -39,21 +36,17 @@ fun Uri.filePathExpand(context: Context): String {
 }
 
 @JvmName("getUriOrEmpty")
-@Version(VersionLog(Version.NONE))
 fun Uri?.orEmptyExpand(): Uri = this ?: Uri.EMPTY
 
 @JvmName("getQueryParameter")
-@Version(VersionLog(Version.NONE))
 fun String.getQueryParameterExpand(key: String, defaultValue: String = ""): String =
     Uri.parse(this).getQueryParameter(key) ?: defaultValue
 
 @JvmName("getBooleanQueryParameter")
-@Version(VersionLog(Version.NONE))
 fun String.getBooleanQueryParameterExpand(key: String, defaultValue: Boolean = false): Boolean =
     Uri.parse(this).getBooleanQueryParameter(key, defaultValue)
 
 @JvmName("getListQueryParameter")
-@Version(VersionLog(Version.NONE))
 fun String.getListQueryParameterExpand(vararg key: String): ArrayList<String> {
     val parse = Uri.parse(this)
     val list = ArrayList<String>()

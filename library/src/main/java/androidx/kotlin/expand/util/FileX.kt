@@ -7,8 +7,8 @@ import android.content.Context
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
-import androidx.kotlin.expand.annotation.Version
-import androidx.kotlin.expand.annotation.VersionLog
+
+
 import androidx.kotlin.expand.content.insertImageUriExpand
 import androidx.kotlin.expand.content.insertVideoUriExpand
 import androidx.kotlin.expand.version.hasQExpand
@@ -17,7 +17,6 @@ import java.io.InputStream
 import java.io.OutputStream
 
 @JvmName("mkdirsFile")
-@Version(VersionLog(Version.NONE))
 fun String.mkdirsFileExpand(child: String): File {
     val pathFile = File(this, child)
     if (!pathFile.exists()) {
@@ -27,7 +26,6 @@ fun String.mkdirsFileExpand(child: String): File {
 }
 
 @JvmName("lowerVersionFile")
-@Version(VersionLog(Version.NONE))
 fun Context.lowerVersionFileExpand(
     fileName: String,
     relativePath: String = Environment.DIRECTORY_DCIM
@@ -40,7 +38,6 @@ fun Context.lowerVersionFileExpand(
 )
 
 @JvmName("copyImage")
-@Version(VersionLog(Version.NONE))
 fun Context.copyImageExpand(
     inputUri: Uri,
     displayName: String,
@@ -58,7 +55,6 @@ fun Context.copyImageExpand(
 }
 
 @JvmName("copyVideo")
-@Version(VersionLog(Version.NONE))
 fun Context.copyVideoExpand(
     inputUri: Uri,
     displayName: String,
@@ -76,7 +72,6 @@ fun Context.copyVideoExpand(
 }
 
 @JvmName("copyFile")
-@Version(VersionLog(Version.NONE))
 fun Context.copyFileExpand(inputUri: Uri, outPutUri: Uri): Uri? {
     val outStream: OutputStream = contentResolver.openOutputStream(outPutUri) ?: return null
     val inStream: InputStream = contentResolver.openInputStream(inputUri) ?: return null
